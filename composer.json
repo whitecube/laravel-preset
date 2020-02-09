@@ -1,0 +1,41 @@
+{
+    "name": "whitecube/laravel-preset",
+    "description": "Custom Laravel Preset for the Whitecube workflow.",
+    "keywords": [
+        "whitecube",
+        "laravel-preset"
+    ],
+    "homepage": "https://github.com/whitecube/laravel-preset",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Adrien Leloup",
+            "email": "adrien@whitecube.be",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^6.0",
+        "laravel/ui": "^1.0.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^4.0",
+        "phpunit/phpunit": "^8.0",
+        "laravel/helpers": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Whitecube\\LaravelPreset\\": "src"
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["Whitecube\\LaravelPreset\\WhitecubeServiceProvider"]
+        }
+    }
+}

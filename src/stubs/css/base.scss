@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: px(m);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.wrapper {
+    width: em($grid_width);
+    max-width: 90%;
+    margin: 0 auto;
+    position: relative;
+}
+
+.sro {
+    @include hidden();
+}
+
+*:focus {
+    outline: none;
+}
