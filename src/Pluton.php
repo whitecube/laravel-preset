@@ -23,7 +23,7 @@ class Pluton
 
     public static function addBabelRc()
     {
-        File::put(base_path() . '/.babelrc', '{"plugins": ["@babel/plugin-proposal-class-properties"]}');
+        copy(__DIR__.'/stubs/.babelrc', base_path('.babelrc'));
     }
 
 }
