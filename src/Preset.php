@@ -22,7 +22,8 @@ class Preset extends LaravelPreset
         return array_merge(
             [
                 'laravel-mix-pluton' => '^1.0.4',
-                '@babel/plugin-proposal-class-properties' => '^7.8.3'
+                '@babel/plugin-proposal-class-properties' => '^7.8.3',
+                '@babel/plugin-proposal-nullish-coalescing-operator' => '^7.8.3',
             ],
             Arr::except($packages, [
                 'vue',
