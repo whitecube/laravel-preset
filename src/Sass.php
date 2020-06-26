@@ -37,14 +37,11 @@ class Sass
 
     public static function addBase()
     {
-        if(!File::exists('resources/sass/base')) {
-            File::makeDirectory('resources/sass/base');
-        }
+        File::ensureDirectoryExists('resources/sass/base');
 
         if(!File::exists('resources/sass/base/_reset.scss')) {
             copy(__DIR__ . '/stubs/css/reset.scss', resource_path('sass/base/_reset.scss'));
         }
-
 
         if(!File::exists('resources/sass/base/_base.scss')) {
             copy(__DIR__ . '/stubs/css/base.scss', resource_path('sass/base/_base.scss'));

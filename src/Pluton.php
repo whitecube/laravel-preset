@@ -17,7 +17,7 @@ class Pluton
     {
         File::cleanDirectory(resource_path('js'));
         copy(__DIR__ . '/stubs/js/app.js', resource_path('js/app.js'));
-        File::makeDirectory('resources/js/parts');
+        File::ensureDirectoryExists('resources/js/parts');
         copy(__DIR__.'/stubs/js/part.js', resource_path('js/parts/example.js'));
     }
 
