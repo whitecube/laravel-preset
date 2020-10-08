@@ -28,6 +28,7 @@ class Sass
     {
         File::delete(resource_path('sass/kaduk.png'));
         File::delete(resource_path('sass/README.md'));
+        File::deleteDirectory(resource_path('sass/.git'));
     }
 
     public static function addEntry()
