@@ -17,7 +17,8 @@
     ],
     "require": {
         "php": "^7.3",
-        "laravel/ui": "^3.0"
+        "laravel/ui": "^3.0",
+        "matt-allan/laravel-code-style": "^0.6.0"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
