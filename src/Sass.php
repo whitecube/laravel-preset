@@ -3,13 +3,15 @@
 namespace Whitecube\LaravelPreset;
 
 use \File;
+use Laravel\Ui\UiCommand;
 use Symfony\Component\Process\Process;
 
 class Sass
 {
 
-    public static function install()
+    public static function install(UiCommand $command)
     {
+        $command->info('Installing white-sass...');
         static::cloneRepo();
         static::removeJunk();
         static::addEntry();

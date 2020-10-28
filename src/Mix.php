@@ -3,12 +3,14 @@
 namespace Whitecube\LaravelPreset;
 
 use \File;
+use Laravel\Ui\UiCommand;
 
 class Mix
 {
 
-    public static function install()
+    public static function install(UiCommand $command)
     {
+        $command->info('Setting up laravel mix...');
         static::copyFile();
         static::setBrowserSyncDomain();
         static::addNpmScripts();

@@ -3,12 +3,14 @@
 namespace Whitecube\LaravelPreset;
 
 use \File;
+use Laravel\Ui\UiCommand;
 
 class Pluton
 {
 
-    public static function install()
+    public static function install(UiCommand $command)
     {
+        $command->info('Installing pluton...');
         static::prepareFiles();
         static::addBabelRc();
     }
