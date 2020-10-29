@@ -15,9 +15,6 @@ composer require whitecube/laravel-preset
 // Activating the preset
 php artisan ui whitecube
 
-// Installing front-end dependencies
-yarn
-
 // You're done! You can now compile, watch, etc!
 yarn dev
 yarn watch
