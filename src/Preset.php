@@ -17,6 +17,7 @@ class Preset extends LaravelPreset
         Pluton::install($command);
         Sass::install($command);
         Assets::install($command);
+        Storage::install($command);
 
         $command->info('Installing NPM packages...');
         shell_exec('yarn');
@@ -29,6 +30,7 @@ class Preset extends LaravelPreset
                 'laravel-mix-pluton' => '^1.0.4',
                 'whitecube-pluton' => '1.0.2',
                 'mix-white-sass-icons' => '^0.0.4',
+                '@babel/core' => '^7.0.0',
                 '@babel/plugin-proposal-class-properties' => '^7.8.3',
                 '@babel/plugin-proposal-nullish-coalescing-operator' => '^7.8.3',
                 'vue-template-compiler' => '^2.6.10',
