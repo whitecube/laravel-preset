@@ -29,7 +29,7 @@ class Preset extends LaravelPreset
             [
                 'laravel-mix-pluton' => '^1.0.4',
                 'whitecube-pluton' => '1.0.2',
-                'mix-white-sass-icons' => '^0.0.4',
+                'mix-white-sass-icons' => '^0.0.6',
                 '@babel/core' => '^7.0.0',
                 '@babel/plugin-proposal-class-properties' => '^7.8.3',
                 '@babel/plugin-proposal-nullish-coalescing-operator' => '^7.8.3',
