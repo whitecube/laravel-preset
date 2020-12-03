@@ -37,7 +37,8 @@ class Preset extends LaravelPreset
                 'browser-sync' => '^2.26.7',
                 'browser-sync-webpack-plugin' => '^2.0.1',
                 'sass-loader' => '^8.0',
-                'sass' => '^1.27'
+                'sass' => '^1.27',
+                'fontellizr' => 'voidgraphics/fontellizr',
             ],
             Arr::except($packages, [
                 'vue',
