@@ -20,7 +20,7 @@
         "laravel/ui": "^3.0",
         "matt-allan/laravel-code-style": "^0.6.0",
         "whitecube/bem-components": "^1.0",
-        "whitecube/laravel-sluggable": "^1.4"
+        "whitecube/laravel-sluggable": "^1.5"
     },
     "require-dev": {
         "orchestra/testbench": "^6.0",
