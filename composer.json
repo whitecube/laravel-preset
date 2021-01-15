@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "php": "^7.3",
+        "php": "^7.3|^8.0",
         "laravel/ui": "^3.0",
         "matt-allan/laravel-code-style": "^0.6.0",
         "whitecube/bem-components": "^1.0",
