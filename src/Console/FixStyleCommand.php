@@ -37,7 +37,7 @@ class FixStyleCommand extends Command
      */
     public function handle()
     {
-        shell_exec('vendor/bin/php-cs-fixer fix');
+        shell_exec('./vendor/bin/php-cs-fixer fix');
 
         return 1;
     }
