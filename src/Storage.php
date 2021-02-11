@@ -9,8 +9,6 @@ class Storage
     public static function install(UiCommand $command)
     {
         $command->info('Preparing storage...');
-        $command->call('storage:link', [
-            '--no-interaction' => true,
-        ]);
+        $command->call('storage:link');
     }
 }
