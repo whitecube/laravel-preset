@@ -22,3 +22,4 @@ composer.lock
 .swp
 .php_cs.cache
 thumbs.db
+/resources/icons/_optimized
