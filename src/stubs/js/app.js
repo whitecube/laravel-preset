@@ -1,4 +1,4 @@
-import Pluton from 'whitecube-pluton';
+import Pluton from '@whitecube/pluton';
 
 class App {
 
