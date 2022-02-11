@@ -19,14 +19,14 @@
         "php": "^7.3|^8.0",
         "laravel/ui": "^3.0",
         "whitecube/bem-components": "^1.1",
-        "whitecube/laravel-sluggable": "^1.5",
-        "barryvdh/laravel-debugbar": "^3.5",
-        "pestphp/pest-plugin-laravel": "^1.0.0"
+        "whitecube/laravel-sluggable": "^1.6",
+        "barryvdh/laravel-debugbar": "^3.6",
+        "pestphp/pest-plugin-laravel": "^1.2.0"
     },
     "require-dev": {
         "jubeki/laravel-code-style": "^1.0",
         "laravel/helpers": "^1.3",
-        "orchestra/testbench": "^6.0",
+        "orchestra/testbench": "^7.0",
         "phpunit/phpunit": "^9.0",
         "spatie/laravel-log-dumper": "^1.4"
     },
