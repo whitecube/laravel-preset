@@ -29,8 +29,5 @@ class WhitecubeServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->commands([
-            FixStyleCommand::class
-        ]);
     }
 }

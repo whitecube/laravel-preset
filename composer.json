@@ -16,12 +16,13 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0",
-        "laravel/ui": "^3.0",
-        "whitecube/bem-components": "^1.1",
-        "whitecube/laravel-sluggable": "^1.6",
+        "php": "^8.0",
         "barryvdh/laravel-debugbar": "^3.6",
-        "pestphp/pest-plugin-laravel": "^1.2.0"
+        "laravel/pint": "^0.1.0",
+        "laravel/ui": "^3.0",
+        "pestphp/pest-plugin-laravel": "^1.2.0",
+        "whitecube/bem-components": "^1.1",
+        "whitecube/laravel-sluggable": "^1.6"
     },
     "require-dev": {
         "jubeki/laravel-code-style": "^1.0",
