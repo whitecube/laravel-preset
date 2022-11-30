@@ -18,7 +18,7 @@
     "require": {
         "php": "^8.0",
         "barryvdh/laravel-debugbar": "^3.6",
-        "laravel/pint": "^0.1.0",
+        "laravel/pint": "^1.0",
         "laravel/ui": "^3.0",
         "pestphp/pest-plugin-laravel": "^1.2.0",
         "whitecube/bem-components": "^1.1",
