@@ -9,8 +9,7 @@ class Pest
     public static function install(UiCommand $command)
     {
         $command->info('Preparing Pest...');
-        $command->call('pest:install', [
-            '--no-interaction' => true,
-        ]);
+        
+        shell_exec('./vendor/bin/pest --init');
     }
 }
