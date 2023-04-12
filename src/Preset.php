@@ -19,8 +19,8 @@ class Preset extends LaravelPreset
         Sass::install($command);
         Assets::install($command);
         Storage::install($command);
+        Composer::install($command);
         Pest::install($command);
-        ComposerEnv::install($command);
 
         $command->info('Installing NPM packages...');
         shell_exec('yarn');
