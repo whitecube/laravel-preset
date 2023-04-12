@@ -27,19 +27,15 @@ class ComposerEnv
         $composer->run([
             'config',
             'scripts.pre-install-cmd',
-            [
-                'App\\Console\\Commands\\ComposerEnv::loadLocalRepositories',
-                'git config core.hooksPath .githooks'
-            ]
+            'App\\Console\\Commands\\ComposerEnv::loadLocalRepositories',
+            'git config core.hooksPath .githooks'
         ]);
 
         $composer->run([
             'config',
             'scripts.pre-update-cmd',
-            [
-                'App\\Console\\Commands\\ComposerEnv::loadLocalRepositories',
-                'git config core.hooksPath .githooks'
-            ]
+            'App\\Console\\Commands\\ComposerEnv::loadLocalRepositories',
+            'git config core.hooksPath .githooks'
         ]);
     }
 }
