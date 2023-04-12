@@ -24,16 +24,14 @@ class Composer
     {
         $packages = [
             'barryvdh/laravel-debugbar',
+            'pestphp/pest',
             'pestphp/pest-plugin-laravel',
             'laravel/pint',
             'spatie/laravel-log-dumper',
             'spatie/laravel-ray'
         ];
 
-        foreach ($packages as $package) {
-            $command->info('Installing '.$package);
-            static::$composer->run(['require', $package]);
-        }
+        static::$composer->run(['require', ...$packages]);
     }
 
     public static function copyStub()
