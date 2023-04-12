@@ -35,11 +35,5 @@ class ComposerEnv
             'scripts.pre-update-cmd',
             'App\\Console\\Commands\\ComposerEnv::loadLocalRepositories'
         ]);
-
-        $composer->run([
-            'config',
-            'scripts.fix-style',
-            './vendor/bin/pint --preset laravel'
-        ]);
     }
 }
