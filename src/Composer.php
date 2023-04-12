@@ -17,7 +17,6 @@ class Composer
 
         static::installPackages($command);
         static::copyStub();
-        static::addComposerScripts();
     }
 
     public static function installPackages()

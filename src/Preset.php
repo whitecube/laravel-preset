@@ -10,7 +10,8 @@ class Preset extends LaravelPreset
 {
     public static function install(UiCommand $command)
     {
-        static::updatePackages($command);
+        static::updatePackages();
+        static::addComposerScripts();
         Codestyle::install($command);
         Gitignore::install($command);
         Mix::install($command);
@@ -50,5 +51,24 @@ class Preset extends LaravelPreset
                 'bootstrap'
             ])
         );
+    }
+
+    public static function addComposerScripts()
+    {
+        $composer = app()->make(\Whitecube\LaravelPreset\Support\Composer::class);
+
+        $composer->run([
+            'config',
+            'scripts.pre-install-cmd',
+            'App\\Console\\Commands\\ComposerEnv::loadLocalRepositories',
+            'git config core.hooksPath .githooks'
+        ]);
+
+        $composer->run([
+            'config',
+            'scripts.pre-update-cmd',
+            'App\\Console\\Commands\\ComposerEnv::loadLocalRepositories',
+            'git config core.hooksPath .githooks'
+        ]);
     }
 }
