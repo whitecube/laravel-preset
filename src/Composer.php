@@ -28,7 +28,7 @@ class Composer
             'laravel/pint',
             'spatie/laravel-log-dumper',
             'spatie/laravel-ray',
-            'whitecube/laravel-sluggable'
+            //'whitecube/laravel-sluggable'
         ];
 
         static::$composer->run(['require', ...$packages]);
