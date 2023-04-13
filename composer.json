@@ -17,9 +17,7 @@
     ],
     "require": {
         "php": "^8.0",
-        "laravel/ui": "^4.0",
-        "whitecube/bem-components": "^1.1",
-        "whitecube/laravel-sluggable": "^1.6"
+        "laravel/ui": "^4.0"
     },
     "autoload": {
         "psr-4": {
