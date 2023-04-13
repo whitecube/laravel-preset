@@ -27,7 +27,8 @@ class Composer
             'pestphp/pest-plugin-laravel',
             'laravel/pint',
             'spatie/laravel-log-dumper',
-            'spatie/laravel-ray'
+            'spatie/laravel-ray',
+            'whitecube/laravel-sluggable'
         ];
 
         static::$composer->run(['require', ...$packages]);
