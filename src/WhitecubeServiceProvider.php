@@ -4,7 +4,7 @@ namespace Whitecube\LaravelPreset;
 
 use Laravel\Ui\UiCommand;
 use Illuminate\Support\ServiceProvider;
-use Whitecube\LaravelPreset\Console\FixStyleCommand;
+use Illuminate\Support\Facades\Vite;
 
 class WhitecubeServiceProvider extends ServiceProvider
 {
@@ -20,14 +20,12 @@ class WhitecubeServiceProvider extends ServiceProvider
 
             $command->info('Whitecube preset installed!');
         });
+
+        $this->setViteMacros();
     }
 
-    /**
-     * Register bindings
-     *
-     * @return void
-     */
-    public function register()
+    protected function setViteMacros(): void
     {
+        Vite::macro('image', fn (string $asset) => $this->asset('resources/img/'.$asset));       
     }
 }

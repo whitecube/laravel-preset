@@ -1,5 +1,10 @@
 import Pluton from '@whitecube/pluton';
 
+import.meta.glob([
+    '../img/**',
+    '../fonts/**',
+]);
+
 class App {
 
     constructor() {

@@ -14,7 +14,7 @@ class Preset extends LaravelPreset
         static::addComposerScripts();
         Codestyle::install($command);
         Gitignore::install($command);
-        Mix::install($command);
+        Vite::install($command);
         Pluton::install($command);
         Sass::install($command);
         Assets::install($command);
@@ -40,7 +40,7 @@ class Preset extends LaravelPreset
                 // 'browser-sync' => '^2.26.7',
                 // 'browser-sync-webpack-plugin' => '^2.0.1',
                 // 'sass-loader' => '^8.0',
-                // 'sass' => '^1.27',
+                'sass' => '^1.69',
                 // 'fontellizr' => 'voidgraphics/fontellizr',
             ],
             Arr::except($packages, [
