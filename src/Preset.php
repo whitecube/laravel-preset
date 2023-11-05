@@ -30,25 +30,25 @@ class Preset extends LaravelPreset
     {
         return array_merge(
             [
-                'laravel-mix-pluton' => '^1.0.5',
-                '@whitecube/pluton' => '^1.0.13',
-                'mix-white-sass-icons' => '^0.2.0',
-                '@babel/core' => '^7.0.0',
-                '@babel/plugin-proposal-class-properties' => '^7.8.3',
-                '@babel/plugin-proposal-nullish-coalescing-operator' => '^7.8.3',
-                'vue-template-compiler' => '^2.6.10',
-                'browser-sync' => '^2.26.7',
-                'browser-sync-webpack-plugin' => '^2.0.1',
-                'sass-loader' => '^8.0',
-                'sass' => '^1.27',
-                'fontellizr' => 'voidgraphics/fontellizr',
+                // 'laravel-mix-pluton' => '^1.0.5',
+                '@whitecube/pluton' => 'dev-vite',
+                // 'mix-white-sass-icons' => '^0.2.0',
+                // '@babel/core' => '^7.0.0',
+                // '@babel/plugin-proposal-class-properties' => '^7.8.3',
+                // '@babel/plugin-proposal-nullish-coalescing-operator' => '^7.8.3',
+                // 'vue-template-compiler' => '^2.6.10',
+                // 'browser-sync' => '^2.26.7',
+                // 'browser-sync-webpack-plugin' => '^2.0.1',
+                // 'sass-loader' => '^8.0',
+                // 'sass' => '^1.27',
+                // 'fontellizr' => 'voidgraphics/fontellizr',
             ],
             Arr::except($packages, [
-                'vue',
-                'popper.js',
-                'lodash',
-                'jquery',
-                'bootstrap'
+                // 'vue',
+                // 'popper.js',
+                // 'lodash',
+                // 'jquery',
+                // 'bootstrap'
             ])
         );
     }
