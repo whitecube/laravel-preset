@@ -17,6 +17,7 @@
     ],
     "require": {
         "php": "^8.0",
+        "laravel/prompts": "^0.1.13",
         "laravel/ui": "^4.0"
     },
     "autoload": {
