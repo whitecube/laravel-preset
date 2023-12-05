@@ -5,6 +5,8 @@ namespace Whitecube\LaravelPreset\Components;
 use Illuminate\Console\Command;
 use function Laravel\Prompts\select;
 use function Laravel\Prompts\table;
+use function Laravel\Prompts\info;
+use function Laravel\Prompts\confirm;
 
 class PublishComponent extends Command
 {
@@ -39,6 +41,13 @@ class PublishComponent extends Command
 
         $files = $publisher->handle();
 
+        if(! $this->promptIfFilesShouldBeOverwritten($files)) {
+            info('Files have not been published.');
+            return static::SUCCESS;
+        }
+
+        info('Publishing files...');
+
         $result = $files->publish();
 
         table(
@@ -60,5 +69,29 @@ class PublishComponent extends Command
         );
 
         return $this->repository->get($classname);
+    }
+
+    /**
+     * Prompt and return the wanted component publisher.
+     */
+    protected function promptIfFilesShouldBeOverwritten(FilesCollection $files): bool
+    {
+        $existing = $files->filter(fn($file) => $file->destinationExists());
+
+        if($existing->isEmpty()) {
+            return true;
+        }
+
+        info('The following files will be overwritten:');
+
+        table(
+            ['File'],
+            $existing->map(fn($file) => [$file->getDestination()])->values()->all()
+        );
+
+        return confirm(
+            label: 'Do you wish to proceed?',
+            default: false,
+        );
     }
 }

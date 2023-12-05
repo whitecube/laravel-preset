@@ -52,6 +52,14 @@ class File
     }
 
     /**
+     * Check if the wanted destination already exists.
+     */
+    public function destinationExists(): bool
+    {
+        return file_exists($this->getDestination());
+    }
+
+    /**
      * Create the file with its content at the destination.
      */
     public function publish(): bool
