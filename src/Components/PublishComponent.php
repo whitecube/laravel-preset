@@ -82,7 +82,7 @@ class PublishComponent extends Command
             return true;
         }
 
-        info('The following files will be overwritten:');
+        info('⚠️ The following files will be overwritten:');
 
         table(
             ['File'],
