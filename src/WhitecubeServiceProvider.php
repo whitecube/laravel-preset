@@ -5,6 +5,7 @@ namespace Whitecube\LaravelPreset;
 use Laravel\Ui\UiCommand;
 use Illuminate\Support\ServiceProvider;
 use Whitecube\LaravelPreset\Console\FixStyleCommand;
+use Whitecube\LaravelPreset\Components\PublishComponent;
 
 class WhitecubeServiceProvider extends ServiceProvider
 {
@@ -15,11 +16,19 @@ class WhitecubeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
         UiCommand::macro('whitecube', function ($command) {
             Preset::install($command);
 
             $command->info('Whitecube preset installed!');
         });
+
+        $this->commands([
+            PublishComponent::class,
+        ]);
     }
 
     /**
