@@ -85,3 +85,9 @@ composer require whitecube/hiker
 php artisan hiker:install
 ```
 
+## Creating new publishable components
+
+In order to add new publishable components to this package (available with `php artisan publish:component`), please open a PR after completing the following steps:
+
+1. Create a new component publisher located in `./src/Components/Publishers/MyComponent.php`. This class should implement `Whitecube\LaravelPreset\Components\PublisherInterface` ;
+2. Inside its `handle()` method, register and return the files that should be created (take a look at the existing examples);
