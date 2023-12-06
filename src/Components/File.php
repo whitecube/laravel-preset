@@ -45,9 +45,6 @@ class File
             destination: $destination,
             content: file_get_contents($origin),
         );
-
-        return new static(
-        );
     }
 
     /**
