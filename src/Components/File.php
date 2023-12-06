@@ -2,6 +2,8 @@
 
 namespace Whitecube\LaravelPreset\Components;
 
+use Illuminate\Support\Facades\File as LaravelFileFacade;
+
 class File
 {
     /**
@@ -90,8 +92,12 @@ class File
      */
     public function publish(): bool
     {
+        $path = $this->getDestination();
+
+        LaravelFileFacade::ensureDirectoryExists(pathinfo($path, PATHINFO_DIRNAME));
+
         $result = file_put_contents(
-            filename: $this->getDestination(),
+            filename: $path,
             data: $this->content,
         );
 
