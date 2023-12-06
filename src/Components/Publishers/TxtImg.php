@@ -21,9 +21,7 @@ class TxtImg implements PublisherInterface
      */
     public function handle(): FilesCollection
     {
-        $files = FilesCollection::make();
-
-        return $files;
+        return FilesCollection::make();
     }
 
     /**

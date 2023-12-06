@@ -15,20 +15,6 @@ class FilesCollection extends Collection
     }
 
     /**
-     * Insert a new publishable file.
-     */
-    public function append(string $stub, string $destination): ?File
-    {
-        if(! ($file = File::make($stub, $destination))) {
-            return null;
-        }
-
-        $this->items[] = $file;
-
-        return $file;
-    }
-
-    /**
      * Create all registered files and return their publication status.
      */
     public function publish(): array

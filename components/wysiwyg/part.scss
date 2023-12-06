@@ -1,1 +1,11 @@
-Some content
+$wysiwyg_foo_variable: 'original';
+$wysiwyg_bar_variable: 12px;
+
+.wysiwyg {
+    font-size: $wysiwyg_bar_variable;
+
+    &:before {
+        content: $wysiwyg_foo_variable;
+        display: block;
+    }
+}

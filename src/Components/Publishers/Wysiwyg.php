@@ -2,6 +2,7 @@
 
 namespace Whitecube\LaravelPreset\Components\Publishers;
 
+use Whitecube\LaravelPreset\Components\File;
 use Whitecube\LaravelPreset\Components\FilesCollection;
 use Whitecube\LaravelPreset\Components\PublisherInterface;
 
@@ -21,19 +22,20 @@ class Wysiwyg implements PublisherInterface
      */
     public function handle(): FilesCollection
     {
-        $files = FilesCollection::make();
-
-        $style = $files->append(
+        $style = File::makeFromStub(
             stub: 'components/wysiwyg/part.scss',
             destination: resource_path('sass/parts/_wysiwyg.scss'),
         );
 
-        $view = $files->append(
+        $view = File::makeFromStub(
             stub: 'components/wysiwyg/view.blade.php',
             destination: resource_path('views/components/wysiwyg.blade.php'),
         );
 
-        return $files;
+        return FilesCollection::make([
+            $style,
+            $view,
+        ]);
     }
 
     /**

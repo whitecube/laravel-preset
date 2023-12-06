@@ -5,12 +5,12 @@ namespace Whitecube\LaravelPreset\Components;
 class File
 {
     /**
-     * The original stub path.
+     * The original stub's path.
      */
-    protected string $origin;
+    protected ?string $origin = null;
 
     /**
-     * The publication path.
+     * The file publication path.
      */
     protected string $destination;
 
@@ -22,17 +22,17 @@ class File
     /**
      * Create a new components repository instance.
      */
-    public function __construct(string $origin, string $destination)
+    public function __construct(string $destination, string $content, ?string $origin = null)
     {
         $this->origin = $origin;
         $this->destination = $destination;
-        $this->content = file_get_contents($this->origin);
+        $this->content = $content;
     }
 
     /**
-     * Create a new components repository instance.
+     * Create a new file instance from an existing stub file.
      */
-    public static function make(string $stub, string $destination): ?static
+    public static function makeFromStub(string $destination, string $stub): ?static
     {
         $origin = realpath(__DIR__ . '/../../' . $stub);
 
@@ -40,7 +40,36 @@ class File
             return null;
         }
 
-        return new static($origin, $destination);
+        return static::make(
+            origin: $origin, 
+            destination: $destination,
+            content: file_get_contents($origin),
+        );
+
+        return new static(
+        );
+    }
+
+    /**
+     * Create a new file instance with the provided content.
+     */
+    public static function make(string $destination, string $content, ?string $origin = null): static
+    {
+        preg_match('/.+\/(?:[^\.]+)\.(.+)$/', $destination, $match);
+
+        $extension = $match[1] ?? null;
+
+        $classname = match ($extension) {
+            'scss' => ScssFile::class,
+            'blade.php' => BladeFile::class,
+            default => File::class,
+        };
+
+        return new $classname(
+            destination: $destination,
+            content: $content,
+            origin: $origin,
+        );
     }
 
     /**
