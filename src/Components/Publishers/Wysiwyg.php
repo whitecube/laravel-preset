@@ -35,4 +35,12 @@ class Wysiwyg implements PublisherInterface
 
         return $files;
     }
+
+    /**
+     * Get the component's usage instructions
+     */
+    public function instructions(): ?string
+    {
+        return "1. Add `@import 'parts/wysiwyg';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-wysiwyg><p>Some content</p></x-wysiwyg>`";
+    }
 }

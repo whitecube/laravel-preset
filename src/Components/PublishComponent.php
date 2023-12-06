@@ -55,6 +55,11 @@ class PublishComponent extends Command
             array_map(fn($path, $status) => [$path, $status ? 'OK' : 'Failure'], array_keys($result), array_values($result)),
         );
 
+        if($instructions = $publisher->instructions()) {
+            info('Instructions:');
+            info($instructions);
+        }
+
         return static::SUCCESS;
     }
 

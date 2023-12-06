@@ -25,4 +25,12 @@ class TxtImg implements PublisherInterface
 
         return $files;
     }
+
+    /**
+     * Get the component's usage instructions
+     */
+    public function instructions(): ?string
+    {
+        return null;
+    }
 }
