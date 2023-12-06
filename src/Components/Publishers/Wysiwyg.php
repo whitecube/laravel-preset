@@ -5,6 +5,7 @@ namespace Whitecube\LaravelPreset\Components\Publishers;
 use Whitecube\LaravelPreset\Components\File;
 use Whitecube\LaravelPreset\Components\FilesCollection;
 use Whitecube\LaravelPreset\Components\PublisherInterface;
+use function Laravel\Prompts\text;
 
 class Wysiwyg implements PublisherInterface
 {
@@ -22,15 +23,22 @@ class Wysiwyg implements PublisherInterface
      */
     public function handle(): FilesCollection
     {
-        $style = File::makeFromStub(
-            stub: 'components/wysiwyg/part.scss',
-            destination: resource_path('sass/parts/_wysiwyg.scss'),
+        $bemBase = text(
+            label: 'Which BEM "base" CSS class should be used?',
+            default: 'wysiwyg',
         );
 
+        $style = File::makeFromStub(
+                stub: 'components/wysiwyg/part.scss',
+                destination: resource_path('sass/parts/_wysiwyg.scss'),
+            )
+            ->replaceBemBase('wysiwyg', $bemBase);
+
         $view = File::makeFromStub(
-            stub: 'components/wysiwyg/view.blade.php',
-            destination: resource_path('views/components/wysiwyg.blade.php'),
-        );
+                stub: 'components/wysiwyg/view.blade.php',
+                destination: resource_path('views/components/wysiwyg.blade.php'),
+            )
+            ->replaceBemBase('wysiwyg', $bemBase);
 
         return FilesCollection::make([
             $style,
