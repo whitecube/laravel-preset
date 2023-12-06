@@ -13,4 +13,14 @@ class ScssFile extends File
 
         return $this;
     }
+
+    /**
+     * Replace a SASS variable's value
+     */
+    public function replaceVariableValue(string $key, string $value): static
+    {
+        $this->content = preg_replace('/\$'.$key.'\s*?\:\s*?(.*?)\;/', '$'.$key.': '.$value.';', $this->content);
+
+        return $this;
+    }
 }

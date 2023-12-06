@@ -32,6 +32,10 @@ class Wysiwyg implements PublisherInterface
                 stub: 'components/wysiwyg/part.scss',
                 destination: resource_path('sass/parts/_wysiwyg.scss'),
             )
+            ->replaceVariableValue('wysiwyg_foo_variable', '"'.str_replace('"', '\"', text(
+                label: 'Which should be the :before value?',
+                placeholder: 'Say hello!',
+            )).'"')
             ->replaceBemBase('wysiwyg', $bemBase);
 
         $view = File::makeFromStub(
