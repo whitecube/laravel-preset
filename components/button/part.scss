@@ -1,0 +1,68 @@
+.button {
+  text-decoration: none;
+  background: color(text-primary);
+  padding: rem(12) rem(20);
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  border: none;
+  transition:
+    background 300ms $ease-out-quad,
+    border 300ms $ease-out-quad;
+
+  &__label {
+    font-size: rem(m);
+    line-height: 150%;
+    color: color(text-contrast);
+    transition: color 300ms $ease-out-quad;
+  }
+
+  &:hover,
+  &:focus {
+    background: color(text-secondary);
+  }
+
+  &--loading {
+    background: color(text-secondary);
+    border: 3px solid color(action-light);
+    pointer-events: none;
+  }
+
+  &--disabled {
+    background: color(action-disabled);
+
+    .button {
+      &__label {
+        color: color(text-disabled);
+      }
+    }
+  }
+
+  &--small {
+    padding: rem(11) rem(14);
+
+    .button {
+      &__label {
+        font-size: rem(14);
+      }
+    }
+  }
+
+  &--outline {
+    border: 1px solid color(border-light);
+    background: transparent;
+    box-shadow: 0 2px 5px rgba(color(black), 0.1);
+
+    .button {
+      &__label {
+        color: color(text-primary);
+      }
+    }
+
+    &:hover,
+    &:focus {
+      border: 1px solid color(border-dark);
+      background: transparent;
+    }
+  }
+}
