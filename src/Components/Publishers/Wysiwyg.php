@@ -5,7 +5,6 @@ namespace Whitecube\LaravelPreset\Components\Publishers;
 use Whitecube\LaravelPreset\Components\File;
 use Whitecube\LaravelPreset\Components\FilesCollection;
 use Whitecube\LaravelPreset\Components\PublisherInterface;
-use function Laravel\Prompts\text;
 
 class Wysiwyg implements PublisherInterface
 {
@@ -14,7 +13,7 @@ class Wysiwyg implements PublisherInterface
      */
     public function label(): string
     {
-        return 'WYSIWYG content';
+        return 'WYSIWYG';
     }
 
     /**
@@ -23,30 +22,25 @@ class Wysiwyg implements PublisherInterface
      */
     public function handle(): FilesCollection
     {
-        $bemBase = text(
-            label: 'Which BEM "base" CSS class should be used?',
-            default: 'wysiwyg',
+        $style = File::makeFromStub(
+            stub: 'components/wysiwyg/style.scss',
+            destination: resource_path('sass/parts/_layout-wysiwyg.scss'),
         );
 
-        $style = File::makeFromStub(
-                stub: 'components/wysiwyg/part.scss',
-                destination: resource_path('sass/parts/_wysiwyg.scss'),
-            )
-            ->replaceVariableValue('wysiwyg_foo_variable', '"'.str_replace('"', '\"', text(
-                label: 'Which should be the :before value?',
-                placeholder: 'Say hello!',
-            )).'"')
-            ->replaceBemBase('wysiwyg', $bemBase);
-
         $view = File::makeFromStub(
-                stub: 'components/wysiwyg/view.blade.php',
-                destination: resource_path('views/components/wysiwyg.blade.php'),
-            )
-            ->replaceBemBase('wysiwyg', $bemBase);
+            stub: 'components/wysiwyg/view.blade.php',
+            destination: resource_path('views/components/layout-wysiwyg.blade.php'),
+        );
+
+        $class = File::makeFromStub(
+            stub: 'components/wysiwyg/class.php',
+            destination: base_path('app/View/Components/Wysiwyg.php'),
+        );
 
         return FilesCollection::make([
             $style,
             $view,
+            $class,
         ]);
     }
 
@@ -55,6 +49,6 @@ class Wysiwyg implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/wysiwyg';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-wysiwyg><p>Some content</p></x-wysiwyg>`";
+        return "1. Add `@import 'parts/layout-wysiwyg';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-layout-wysiwyg><p>Some content</p></x-layout-wysiwyg>`";
     }
 }
