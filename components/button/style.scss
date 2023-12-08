@@ -1,7 +1,7 @@
 .button {
-  text-decoration: none;
   background: color(text-primary);
   padding: rem(12) rem(20);
+  font-weight: 700;
   border-radius: 8px;
   border: none;
   cursor: pointer;
@@ -9,12 +9,17 @@
   transition:
     background 300ms $ease-out-quad,
     border 300ms $ease-out-quad;
+  text-decoration: none;
 
   &__label {
     font-size: rem(m);
     line-height: 150%;
     color: color(text-contrast);
     transition: color 300ms $ease-out-quad;
+
+    &:before {
+      transition: transform 150ms $ease-out-quad;
+    }
   }
 
   &:hover,
@@ -38,16 +43,6 @@
     }
   }
 
-  &--small {
-    padding: rem(11) rem(14);
-
-    .button {
-      &__label {
-        font-size: rem(14);
-      }
-    }
-  }
-
   &--outline {
     border: 1px solid color(border-light);
     background: transparent;
@@ -64,5 +59,73 @@
       border: 1px solid color(border-dark);
       background: transparent;
     }
+  }
+
+  &--medium {
+    padding: rem(11) rem(14);
+    box-shadow: none;
+
+    .button {
+      &__label {
+        font-size: rem(14);
+      }
+    }
+  }
+
+  &--small {
+    padding: rem(9) rem(10);
+    box-shadow: none;
+
+    .button {
+      &__label {
+        font-size: rem(13);
+      }
+    }
+  }
+
+  &--tiny {
+    padding: rem(4) rem(8);
+    box-shadow: none;
+
+    .button {
+      &__label {
+        font-size: rem(13);
+        line-height: 110%;
+        gap: rem(6);
+
+        &:hover {
+          &:before {
+            transform: translateX(rem(1));
+          }
+        }
+
+        &:before {
+          font-size: rem(10);
+        }
+      }
+    }
+  }
+
+  &--icon {
+    .button__label {
+      display: flex;
+      align-items: center;
+    }
+
+    &-right {
+      .button__label {
+        flex-direction: row-reverse;
+      }
+    }
+
+    /*
+        Add the different icons here
+        Ex:
+        &-arrow-right {
+            .button__label:before {
+                @include icon("arrow-right");
+            }
+        }
+        */
   }
 }

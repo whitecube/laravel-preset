@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Whitecube\BemComponents\BemComponent;
 
-class button extends BemComponent
+class Button extends BemComponent
 {
     /**
      * The tag used for the component.
@@ -20,12 +20,18 @@ class button extends BemComponent
     public ?string $href;
 
     /**
+     * The icon of the button
+     */
+    public ?string $icon;
+
+    /**
      * Create a new component instance.
      */
-    public function __construct(string $href = null, string $tag = 'button')
+    public function __construct(string $href = null, string $icon = null, string $tag = 'button')
     {
         $this->tag = $tag;
         $this->href = $href;
+        $this->icon = $icon;
     }
 
     /**

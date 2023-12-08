@@ -49,6 +49,6 @@ class Button implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/button';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-button tag=\"a\" href=\"/example\" modifier=\"small\">Content</x-button>`.\r\nThe component `tag` attribute has a default value of \"button\". If it's an `a`, it should also have an `href` attribute.\r\nThe available modifiers are: `loading`, `disabled`, `small`, `outline`";
+        return "1. Add `@import 'parts/button';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-button tag=\"a\" href=\"/example\" modifier=\"small\" icon=\"arrow-right\">Content</x-button>`.\r\nThe component `tag` attribute has a default value of \"button\". If it's an `a`, it should also have an `href` attribute.";
     }
 }
