@@ -21,7 +21,26 @@ class TxtImg implements PublisherInterface
      */
     public function handle(): FilesCollection
     {
-        return FilesCollection::make();
+        $style = File::makeFromStub(
+            stub: 'components/txt-img/style.scss',
+            destination: resource_path('sass/parts/_txt-img.scss'),
+        );
+
+        $view = File::makeFromStub(
+            stub: 'components/txt-img/view.blade.php',
+            destination: resource_path('views/components/txt-img.blade.php'),
+        );
+
+        $component = File::makeFromStub(
+            stub: 'components/txt-img/Component.php',
+            destination: base_path('app/View/Components/TxtImg.php'),
+        );
+
+        return FilesCollection::make([
+            $style,
+            $view,
+            $component,
+        ]);
     }
 
     /**
