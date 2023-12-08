@@ -32,15 +32,15 @@ class Button implements PublisherInterface
             destination: resource_path('views/components/button.blade.php'),
         );
 
-        $class = File::makeFromStub(
-            stub: 'components/button/class.php',
-            destination: base_path('app/View/Components/button.php'),
+        $component = File::makeFromStub(
+            stub: 'components/button/Component.php',
+            destination: base_path('app/View/Components/Button.php'),
         );
 
         return FilesCollection::make([
             $style,
             $view,
-            $class,
+            $component,
         ]);
     }
 
