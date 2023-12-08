@@ -32,15 +32,15 @@ class Wysiwyg implements PublisherInterface
             destination: resource_path('views/components/header.blade.php'),
         );
 
-        $class = File::makeFromStub(
-            stub: 'components/header/class.blade.php',
-            destination: base_path('app/View/Components/header.php'),
+        $component = File::makeFromStub(
+            stub: 'components/header/Component.blade.php',
+            destination: base_path('app/View/Components/Header.php'),
         );
 
         return FilesCollection::make([
             $style,
             $view,
-            $class,
+            $component,
         ]);
     }
 

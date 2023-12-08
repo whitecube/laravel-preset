@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class header extends Component
+class Header extends Component
 {
     /**
      * The header's title
