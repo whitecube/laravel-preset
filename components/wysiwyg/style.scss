@@ -1,37 +1,22 @@
-@use "sass:math";
-
-$text-width: rem(592);
-$img-width: rem(794);
-
 .layout-wysiwyg {
-  width: $img-width;
-  margin: 0 auto;
+  width: 100%;
   font-size: rem(m);
   line-height: 140%;
   color: color(black);
 
-  > * {
-    width: $text-width;
-    margin-left: auto;
-    margin-right: auto;
+  &__container {
+    margin: 0 auto;
+    width: col(6, 12);
 
-    & + p,
-    & + img,
-    & + table,
-    & + ul,
-    & + ol,
-    & + blockquote {
-      margin-top: rem(28);
-      margin-bottom: rem(28);
-    }
-  }
-
-  .layout-img {
-    width: $img-width;
-
-    &__figcaption {
-      width: $text-width;
-      padding: 0 math.div($img-width - $text-width, 2);
+    & > * {
+      & + p,
+      & + img,
+      & + table,
+      & + ul,
+      & + ol,
+      & + blockquote {
+        margin: rem(28) 0;
+      }
     }
   }
 
@@ -46,40 +31,35 @@ $img-width: rem(794);
   h1 {
     font-size: rem(36);
     line-height: 120%;
-    margin-top: rem(64);
-    margin-bottom: rem(32);
+    margin: rem(64) 0 rem(32);
     letter-spacing: rem(-0.784);
   }
 
   h2 {
     font-size: rem(24);
     line-height: 130%;
-    margin-top: rem(32);
-    margin-bottom: rem(18);
+    margin: rem(32) 0 rem(18);
     letter-spacing: rem(-0.464);
   }
 
   h3 {
     font-size: rem(20);
     line-height: 140%;
-    margin-top: rem(28);
-    margin-bottom: rem(16);
+    margin: rem(28) 0 rem(16);
     letter-spacing: rem(-0.336);
   }
 
   h4 {
     font-size: rem(18);
     line-height: 150%;
-    margin-top: rem(24);
-    margin-bottom: rem(12);
+    margin: rem(24) 0 rem(12);
     letter-spacing: rem(-0.256);
   }
 
   h5 {
     font-size: rem(m);
     line-height: 150%;
-    margin-top: rem(20);
-    margin-bottom: rem(8);
+    margin: rem(20) 0 rem(8);
     letter-spacing: rem(-0.176);
   }
 
@@ -121,8 +101,7 @@ $img-width: rem(794);
     li {
       padding: 0 0 0 rem(32);
       position: relative;
-      margin-bottom: rem(8);
-      margin-top: rem(8);
+      margin: rem(8) 0;
 
       &:before {
         content: "";
@@ -182,7 +161,7 @@ $img-width: rem(794);
   blockquote {
     text-align: left;
     line-height: 120%;
-    margin-left: math.div($img-width - $text-width + rem(32), 2);
+    margin-left: rem(32);
   }
 
   img {
@@ -191,6 +170,7 @@ $img-width: rem(794);
   }
 
   table {
+    width: 100%;
     font-size: rem(m);
     text-align: left;
 
