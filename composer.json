@@ -13,7 +13,17 @@
             "name": "Adrien Leloup",
             "email": "adrien@whitecube.be",
             "role": "Developer"
-        }
+        },
+        {
+            "name": "Théo Léonet",
+            "email": "theo@whitecube.be",
+            "role": "Developer"
+        },
+        {
+            "name": "Toon Van den Bos",
+            "email": "toon@whitecube.be",
+            "role": "Developer"
+        },
     ],
     "require": {
         "php": "^8.0",
