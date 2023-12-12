@@ -23,7 +23,7 @@
             "name": "Toon Van den Bos",
             "email": "toon@whitecube.be",
             "role": "Developer"
-        },
+        }
     ],
     "require": {
         "php": "^8.0",
