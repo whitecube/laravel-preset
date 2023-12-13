@@ -1,131 +1,174 @@
 .button {
-  background: color(text-primary);
-  padding: rem(12) rem(20);
-  font-weight: 700;
-  border-radius: 8px;
-  border: none;
-  cursor: pointer;
-  border: none;
-  transition:
-    background 300ms $ease-out-quad,
-    border 300ms $ease-out-quad;
-  text-decoration: none;
-
-  &__label {
-    font-size: rem(m);
-    line-height: 150%;
-    color: color(text-contrast);
-    transition: color 300ms $ease-out-quad;
-
-    &:before {
-      transition: transform 150ms $ease-out-quad;
-    }
-  }
-
-  &:hover,
-  &:focus {
-    background: color(text-secondary);
-  }
-
-  &--loading {
-    background: color(text-secondary);
-    border: 3px solid color(action-light);
-    pointer-events: none;
-  }
-
-  &--disabled {
-    background: color(action-disabled);
-
-    .button {
-      &__label {
-        color: color(text-disabled);
-      }
-    }
-  }
-
-  &--outline {
-    border: 1px solid color(border-light);
-    background: transparent;
-    box-shadow: 0 2px 5px rgba(color(black), 0.1);
-
-    .button {
-      &__label {
-        color: color(text-primary);
-      }
-    }
+    display: inline-block;
+    background: color(text-primary);
+    padding: rem(11) rem(14);
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition:
+        background 300ms $ease-out-quad,
+        border 300ms $ease-out-quad,
+        box-shadow 300ms $ease-out-quad;
 
     &:hover,
-    &:focus {
-      border: 1px solid color(border-dark);
-      background: transparent;
+    &:focus,
+    &:active {
+        background: color(text-secondary);
     }
-  }
 
-  &--medium {
-    padding: rem(11) rem(14);
-    box-shadow: none;
+    &:focus,
+    &:active {
+        box-shadow: 0 0 0 3px color(border-active);
+    }
 
-    .button {
-      &__label {
+    &[disabled] {
+        background: color(background-medium);
+        cursor: not-allowed;
+
+        .button__label {
+            color: color(text-disabled);
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            background: color(background-medium);
+            box-shadow: none;
+
+            &.button--outline {
+                border: 1px solid color(border-light);
+            }
+
+            .button__label {
+                color: color(text-disabled);
+            }
+        }
+
+        &.button--outline {
+            box-shadow: none;
+        }
+    }
+
+    &__label {
         font-size: rem(14);
-      }
+        line-height: 120%;
+        color: color(text-contrast);
+        transition: color 300ms $ease-out-quad;
     }
-  }
 
-  &--small {
-    padding: rem(9) rem(10);
-    box-shadow: none;
-
-    .button {
-      &__label {
-        font-size: rem(13);
-      }
-    }
-  }
-
-  &--tiny {
-    padding: rem(4) rem(8);
-    box-shadow: none;
-
-    .button {
-      &__label {
-        font-size: rem(13);
-        line-height: 110%;
-        gap: rem(6);
+    &--secondary {
+        background: color(background-medium);
 
         &:hover {
-          &:before {
-            transform: translateX(rem(1));
-          }
+            background: color(border-light);
         }
 
-        &:before {
-          font-size: rem(10);
+        &:focus,
+        &:active {
+            background: transparent;
         }
-      }
-    }
-  }
 
-  &--icon {
-    .button__label {
-      display: flex;
-      align-items: center;
+        .button__label {
+            color: color(text-primary);
+        }
     }
 
-    &-right {
-      .button__label {
-        flex-direction: row-reverse;
-      }
+    &--outline {
+        border: 1px solid color(border-light);
+        background: transparent;
+
+        &:hover,
+        &:focus,
+        &:active {
+            border: 1px solid color(border-dark);
+            background: transparent;
+        }
+
+        &.button--large {
+            box-shadow: 0 2px 5px rgba(color(black), 0.1);
+
+            &:focus,
+            &:active {
+                box-shadow: 0 0 0 3px color(border-active);
+            }
+        }
+
+        .button__label {
+            color: color(text-primary);
+        }
     }
 
-    /*
-        Add the different icons here
-        Ex:
+    &--large {
+        padding: rem(12) rem(20);
+        border-radius: 8px;
+
+        & .button__label {
+            font-size: rem(16);
+            line-height: 150%;
+        }
+    }
+
+    &--small {
+        padding: rem(9) rem(10);
+    }
+
+    &--tiny {
+        padding: rem(4) rem(8);
+    }
+
+    &--small,
+    &--tiny {
+        & .button__label {
+            font-size: rem(13);
+            line-height: 110%;
+        }
+    }
+
+    &--icon {
+        .button__label {
+            display: flex;
+            align-items: center;
+            gap: rem(4);
+
+            &:before {
+                font-size: rem(12);
+            }
+        }
+
+        &.button--large {
+            & .button__label {
+                gap: rem(8);
+
+                &:before {
+                    font-size: rem(14);
+                }
+            }
+        }
+
+        &.button--tiny {
+            & .button__label:before {
+                font-size: rem(9);
+            }
+        }
+
+        &-right {
+            .button__label {
+                flex-direction: row-reverse;
+            }
+        }
+
+        &-more {
+            .button__label:before {
+                @include icon("more");
+            }
+        }
+
         &-arrow-right {
             .button__label:before {
                 @include icon("arrow-right");
             }
         }
-        */
-  }
+    }
 }

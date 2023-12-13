@@ -1,6 +1,3 @@
-<{{ $tag }}
-	{{ isset($href) ? 'href='.$href : '' }}
-	class="{{ $bem('button') }}{{ isset($icon) ? ' button--icon button--icon-'.$icon : '' }}"
->
+<{{ $tag }} {{ $contextualizedAttributes($attributes) }}>
     <span class="button__label">{{ $slot }}</span>
 </{{ $tag }}>
