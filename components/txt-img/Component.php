@@ -4,10 +4,13 @@ namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
-use Whitecube\BemComponents\BemComponent;
+use Illuminate\View\Component;
+use Whitecube\BemComponents\HasBemClasses;
 
-class TxtImg extends BemComponent
+class TxtImg extends Component
 {
+    use HasBemClasses;
+
     /**
      * The TxtImg's title.
      */
@@ -33,21 +36,6 @@ class TxtImg extends BemComponent
      */
     public string $text;
 
-    /*
-     * The TxtImg's button href.
-     */
-    public ?string $buttonHref;
-
-    /*
-     * The TxtImg's button modifiers.
-     */
-    public ?string $buttonModifiers;
-
-    /**
-     * The TxtImg's button content.
-     */
-    public ?string $buttonContent;
-
     /**
      * The TxtImg's image.
      */
@@ -63,24 +51,18 @@ class TxtImg extends BemComponent
      */
     public function __construct(
         string $title,
+        string $text,
+        string $img,
+        string $alt,
         string $moreHref = null,
         string $moreContent = null,
         string $label = null,
-        string $text,
-        string $buttonHref = null,
-        string $buttonModifiers = null,
-        string $buttonContent = null,
-        string $img,
-        string $alt,
     ) {
         $this->title = $title;
         $this->moreHref = $moreHref;
         $this->moreContent = $moreContent;
         $this->label = $label;
         $this->text = $text;
-        $this->buttonHref = $buttonHref;
-        $this->buttonModifiers = $buttonModifiers;
-        $this->buttonContent = $buttonContent;
         $this->img = $img;
         $this->alt = $alt;
     }
