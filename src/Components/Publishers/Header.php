@@ -6,7 +6,7 @@ use Whitecube\LaravelPreset\Components\File;
 use Whitecube\LaravelPreset\Components\FilesCollection;
 use Whitecube\LaravelPreset\Components\PublisherInterface;
 
-class Wysiwyg implements PublisherInterface
+class Header implements PublisherInterface
 {
     /**
      * Get the component's displayable name.
@@ -33,7 +33,7 @@ class Wysiwyg implements PublisherInterface
         );
 
         $component = File::makeFromStub(
-            stub: 'components/header/Component.blade.php',
+            stub: 'components/header/Component.php',
             destination: base_path('app/View/Components/Header.php'),
         );
 

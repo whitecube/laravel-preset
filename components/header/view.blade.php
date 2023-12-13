@@ -1,4 +1,4 @@
-<header class="header">
+<header {{ $attributes->bem('header') }}>
     <div class="wrapper">
         <div class="header__container">
             <h1 class="header__title">{{ $title }}</h1>
@@ -15,14 +15,17 @@
             @isset($text)
                 <p class="header__txt">{{ $text }}</p>
             @endisset
-            @isset($buttonHref, $buttonContent)
-                <x-button tag="a"
-                    href="{{ $buttonHref }}"
-                    modifiers="{{ $buttonModifiers }}"
-                >
-                    {{ $buttonContent }}
-                </x-button>
+            @isset($actions)
+                <div class="header__actions">
+                    {{ $actions }}
+                </div>
             @endisset
         </div>
     </div>
+    @isset($backgroundImgSrc)
+        <div class="header__background">
+            <img src="{{ $backgroundImgSrc }}" alt="{{ $backgroundImgAlt }}" class="header__img">
+            <div class="header__overlay"></div>
+        </div>
+    @endisset
 </header>

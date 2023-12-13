@@ -5,9 +5,12 @@ namespace App\View\Components;
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Whitecube\BemComponents\HasBemClasses;
 
 class Header extends Component
 {
+    use HasBemClasses;
+
     /**
      * The header's title
      */
@@ -34,19 +37,14 @@ class Header extends Component
     public ?string $text;
 
     /**
-     * The header's button href
+     * The header's background image
      */
-    public ?string $buttonHref;
+    public ?string $backgroundImgSrc;
 
     /**
-     * The header's button modifiers
+     * The header's background image alt
      */
-    public ?string $buttonModifiers;
-
-    /**
-     * The header's button content
-     */
-    public ?string $buttonContent;
+    public ?string $backgroundImgAlt;
 
     /**
      * Create a new component instance.
@@ -57,18 +55,20 @@ class Header extends Component
         string $backContent = null,
         string $label = null,
         string $text = null,
-        string $buttonHref = null,
-        string $buttonModifiers = '',
-        string $buttonContent = null
+        string $backgroundImgSrc = null,
+        string $backgroundImgAlt = '',
     ) {
         $this->title = $title;
         $this->backHref = $backHref;
         $this->backContent = $backContent;
         $this->label = $label;
         $this->text = $text;
-        $this->buttonHref = $buttonHref;
-        $this->buttonModifiers = $buttonModifiers;
-        $this->buttonContent = $buttonContent;
+        $this->backgroundImgSrc = $backgroundImgSrc;
+        $this->backgroundImgAlt = $backgroundImgAlt;
+
+        if($backgroundImgSrc){
+            $this->modifier('has-img');
+        }
     }
 
     /**
