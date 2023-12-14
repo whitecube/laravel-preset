@@ -1,3 +1,8 @@
+$available-icons:
+    "arrow-right",
+    "elipse",
+    "more";
+
 .button {
     display: inline-block;
     background: color(text-primary);
@@ -23,12 +28,16 @@
         box-shadow: 0 0 0 3px color(border-active);
     }
 
-    &[disabled] {
+    &[disabled]:not(.button--loading) {
         background: color(background-medium);
         cursor: not-allowed;
 
         .button__label {
             color: color(text-disabled);
+
+            &:before {
+                color: color(text-disabled);
+            }
         }
 
         &:hover,
@@ -49,6 +58,10 @@
         &.button--outline {
             box-shadow: none;
         }
+
+        &.button--text {
+            background: transparent;
+        }
     }
 
     &__label {
@@ -56,18 +69,30 @@
         line-height: 120%;
         color: color(text-contrast);
         transition: color 300ms $ease-out-quad;
+        position: relative;
+
+        &:after {
+            @include icon('elipse');
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            color: transparent;
+            transition: color 300ms $ease-out-quad;
+        }
     }
 
     &--secondary {
         background: color(background-medium);
 
-        &:hover {
-            background: color(border-light);
-        }
+        &:not(.button--loading) {
+            &:hover {
+                background: color(border-light);
+            }
 
-        &:focus,
-        &:active {
-            background: transparent;
+            &:focus,
+            &:active {
+                background: transparent;
+            }
         }
 
         .button__label {
@@ -79,19 +104,23 @@
         border: 1px solid color(border-light);
         background: transparent;
 
-        &:hover,
-        &:focus,
-        &:active {
-            border: 1px solid color(border-dark);
-            background: transparent;
+        &:not(.button--loading){
+            &:hover,
+            &:focus,
+            &:active {
+                border: 1px solid color(border-dark);
+                background: transparent;
+            }
         }
 
         &.button--large {
             box-shadow: 0 2px 5px rgba(color(black), 0.1);
 
-            &:focus,
-            &:active {
-                box-shadow: 0 0 0 3px color(border-active);
+            &:not(.button--loading):not(:disabled) {
+                &:focus,
+                &:active {
+                    box-shadow: 0 0 0 3px color(border-active);
+                }
             }
         }
 
@@ -104,7 +133,7 @@
         padding: rem(12) rem(20);
         border-radius: 8px;
 
-        & .button__label {
+        .button__label {
             font-size: rem(16);
             line-height: 150%;
         }
@@ -120,9 +149,133 @@
 
     &--small,
     &--tiny {
-        & .button__label {
+        .button__label {
             font-size: rem(13);
             line-height: 110%;
+        }
+    }
+
+    &--text {
+        padding: 0;
+        background: transparent;
+        border-radius: 2px;
+
+        &:hover {
+            background: transparent;
+
+            .button__label {
+                color: color(text-secondary);
+            }
+        }
+
+        &:active,
+        &:focus {
+            background: transparent;
+            box-shadow: 0 0 0 2px color(text-secondary);
+
+            .button__label {
+                color: color(text-primary);
+            }
+        }
+
+        & .button__label {
+            color: color(text-primary);
+        }
+
+        &.button--secondary {
+            color: color(text-secondary);
+
+            &:disabled:not(.button--loading) {
+                &:hover {
+                    .button__label {
+                        &:before {
+                            color: color(text-disabled);
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                background: transparent;
+
+                .button__label {
+                    color: color(text-disabled);
+
+                    &:before {
+                        color: color(text-secondary);
+                    }
+                }
+            }
+
+            &:active,
+            &:focus {
+                .button__label {
+                    color: color(text-secondary);
+                }
+            }
+        }
+    }
+
+    &--loading {
+        cursor: wait;
+
+        background: color(text-secondary);
+
+        &:active,
+        &:focus {
+            box-shadow: none;
+        }
+
+        .button__label {
+            display: flex;
+            align-items: center;
+            color: transparent;
+
+            &:after {
+                transition: color 300ms $ease-out-quad;
+                color: color(white);
+                animation: 2s infinite rotate linear;
+            }
+        }
+
+        &.button--text {
+            .button__label:after {
+                color: color(text-primary);
+            }
+        }
+
+        &.button--secondary {
+            background: color(background-medium);
+        }
+
+        &.button--outline {
+            background: transparent;
+
+            &.button--large {
+                &:focus,
+                &:active {
+                    box-shadow: 0 2px 5px rgba(color(black), 0.1);
+                }
+            }
+        }
+
+        &.button--secondary,
+        &.button--outline{
+            .button__label:after {
+                color: color(text-primary)
+            }
+        }
+
+        &.button--text {
+            background: transparent;
+
+            &:hover .button__label {
+                color: transparent;
+
+                &:before {
+                    color: transparent;
+                }
+            }
         }
     }
 
@@ -133,12 +286,13 @@
             gap: rem(4);
 
             &:before {
+                transition: 300ms color $ease-out-quad;
                 font-size: rem(12);
             }
         }
 
         &.button--large {
-            & .button__label {
+            .button__label {
                 gap: rem(8);
 
                 &:before {
@@ -148,7 +302,7 @@
         }
 
         &.button--tiny {
-            & .button__label:before {
+            .button__label:before {
                 font-size: rem(9);
             }
         }
@@ -159,16 +313,16 @@
             }
         }
 
-        &-more {
-            .button__label:before {
-                @include icon("more");
+        @each $icon in $available-icons {
+            &[data-icon="#{$icon}"] .button__label:before {
+                @include icon($icon)
             }
         }
+    }
+}
 
-        &-arrow-right {
-            .button__label:before {
-                @include icon("arrow-right");
-            }
-        }
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
     }
 }

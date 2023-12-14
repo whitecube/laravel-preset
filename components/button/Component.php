@@ -14,7 +14,6 @@ class Button extends Component
 
     /**
      * The tag used for the component.
-     * Default is `<button>` but it could also be `<a>`.
      */
     public string $tag;
 
@@ -24,6 +23,11 @@ class Button extends Component
     public ?string $href;
 
     /**
+     * The type of the button in case the tag is `<button>`
+     */
+    public ?string $type;
+
+    /**
      * The icon of the button
      */
     public ?string $icon;
@@ -31,27 +35,33 @@ class Button extends Component
     /**
      * If the button is disabled or not.
      */
-    public ?bool $disabled;
+    public bool $disabled;
 
     /**
      * Create a new component instance.
      */
     public function __construct(
-        string $href = null,
-        string $icon = null,
-        string $disabled = null,
-        string $tag = 'button'
+        ?string $href = null,
+        ?string $type = null,
+        ?string $icon = null,
+        bool $disabled = false,
     ) {
-        $this->tag = $tag;
         $this->href = $href;
+        $this->type = $type;
         $this->icon = $icon;
         $this->disabled = $disabled;
 
         if($this->icon) {
-            $this->modifiers([
-                'icon',
-                'icon-'.$icon
-            ]);
+            $this->modifier('icon');
+        }
+
+        if($this->href) {
+            $this->tag = 'a';
+            $this->type = null;
+            $this->disabled = false;
+        } else {
+            $this->tag = 'button';
+            $this->type = in_array($type, ['button','submit','reset']) ? $type : 'button';
         }
     }
 
@@ -68,16 +78,22 @@ class Button extends Component
      */
     public function contextualizedAttributes(ComponentAttributeBag $attributes): ComponentAttributeBag
     {
-        $attributes->bem('button');
-
-        if($this->href){
+        if($this->href) {
             $attributes = $attributes->merge(['href' => $this->href]);
         }
 
-        if($this->disabled){
+        if($this->disabled) {
             $attributes = $attributes->merge(['disabled' => '']);
         }
 
-        return $attributes;
+        if($this->icon) {
+            $attributes = $attributes->merge(['data-icon' => $this->icon]);
+        }
+
+        if($this->type) {
+            $attributes = $attributes->merge(['type' => $this->type]);
+        }
+
+        return $this->attributes = $attributes;
     }
 }
