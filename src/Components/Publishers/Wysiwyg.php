@@ -22,8 +22,13 @@ class Wysiwyg implements PublisherInterface
      */
     public function handle(): FilesCollection
     {
-        $style = File::makeFromStub(
-            stub: 'components/wysiwyg/style.scss',
+        $helper = File::makeFromStub(
+            stub: 'components/wysiwyg/helper.scss',
+            destination: resource_path('sass/parts/_wysiwyg.scss'),
+        );
+
+        $layout = File::makeFromStub(
+            stub: 'components/wysiwyg/layout.scss',
             destination: resource_path('sass/parts/_layout-wysiwyg.scss'),
         );
 
@@ -38,7 +43,8 @@ class Wysiwyg implements PublisherInterface
         );
 
         return FilesCollection::make([
-            $style,
+            $helper,
+            $layout,
             $view,
             $component,
         ]);
@@ -49,6 +55,6 @@ class Wysiwyg implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/layout-wysiwyg';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-layout-wysiwyg><p>Some content</p></x-layout-wysiwyg>`";
+        return "1. Add `@import 'parts/wysiwyg';` and `@import 'parts/layout-wysiwyg';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-layout-wysiwyg><p>Some content</p></x-layout-wysiwyg>`";
     }
 }
