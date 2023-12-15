@@ -17,57 +17,22 @@ class Header extends Component
     public string $title;
 
     /**
-     * The header's backlink href
-     */
-    public ?string $backHref;
-
-    /**
-     * The header's backlink content
-     */
-    public ?string $backContent;
-
-    /**
-     * The header's label
-     */
-    public ?string $label;
-
-    /**
-     * The header's text
-     */
-    public ?string $text;
-
-    /**
      * The header's background image
      */
-    public ?string $backgroundImgSrc;
-
-    /**
-     * The header's background image alt
-     */
-    public ?string $backgroundImgAlt;
+    public ?string $background;
 
     /**
      * Create a new component instance.
      */
     public function __construct(
         string $title,
-        string $backHref = null,
-        string $backContent = null,
-        string $label = null,
-        string $text = null,
-        string $backgroundImgSrc = null,
-        string $backgroundImgAlt = '',
+        ?string $background = null,
     ) {
         $this->title = $title;
-        $this->backHref = $backHref;
-        $this->backContent = $backContent;
-        $this->label = $label;
-        $this->text = $text;
-        $this->backgroundImgSrc = $backgroundImgSrc;
-        $this->backgroundImgAlt = $backgroundImgAlt;
+        $this->background = $background;
 
-        if($backgroundImgSrc){
-            $this->modifier('has-img');
+        if($background){
+            $this->modifier('img');
         }
     }
 

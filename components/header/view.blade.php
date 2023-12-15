@@ -2,30 +2,30 @@
     <div class="wrapper">
         <div class="header__container">
             <h1 class="header__title">{{ $title }}</h1>
-            @isset($backHref, $backContent)
-                <a href="{{ $backHref }}"
-                    class="header__link"
-                >
-                    {{ $backContent }}
-                </a>
-            @endisset
-            @isset($label)
-                <p class="header__label">{{ $label}}</p>
-            @endisset
-            @isset($text)
-                <p class="header__txt">{{ $text }}</p>
-            @endisset
-            @isset($actions)
+            @if(isset($headlink) && $headlink->isNotEmpty())
+                <div class="header__headlink">
+                    {{ $headlink }}
+                </div>
+            @endif
+            @if(isset($label) && $label->isNotEmpty())
+                <p class="header__label">{{ $label }}</p>
+            @endif
+            @if(isset($text) && $text->isNotEmpty())
+                <div class="header__txt wysiwyg {{ isset($background) ? 'wysiwyg--contrast' : '' }}">
+                    {{ $text }}
+                </div>
+            @endif
+            @if(isset($actions) && $actions->isNotEmpty())
                 <div class="header__actions">
                     {{ $actions }}
                 </div>
-            @endisset
+            @endif
         </div>
     </div>
-    @isset($backgroundImgSrc)
-        <div class="header__background">
-            <img src="{{ $backgroundImgSrc }}" alt="{{ $backgroundImgAlt }}" class="header__img">
-            <div class="header__overlay"></div>
-        </div>
+    @isset($background)
+        <div class="header__background"
+            style="background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url({{ $background }})"
+            aria-hidden="true"
+        ></div>
     @endisset
 </header>
