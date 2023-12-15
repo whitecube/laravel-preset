@@ -4,27 +4,23 @@
             <div class="txt-img__info">
                 <div class="txt-img__content">
                     <h2 class="txt-img__title">{{ $title }}</h2>
-                    @isset($moreHref, $moreContent)
-                        <div class="txt-img__more">
-                            <x-button tag="a"
-                                :href="$moreHref"
-                                modifiers="tiny outline icon-right"
-                                icon="arrow-right"
-                            >
-                                {{ $moreContent }}
-                            </x-button>
+                    @if(isset($headlink) && $headlink->isNotEmpty())
+                        <div class="txt-img__headlink">
+                            {{ $headlink }}
                         </div>
-                    @endisset
-                    @isset($label)
+                    @endif
+                    @if(isset($label) && $label->isNotEmpty())
                         <p class="txt-img__label">{{ $label }}</p>
-                    @endisset
+                    @endif
                 </div>
-                <p class="txt-img__txt">{{ $text }}</p>
-                @isset($actions)
+                <div class="txt-img__txt wysiwyg">
+                    {{ $text }}
+                </div>
+                @if(isset($actions) && $actions->isNotEmpty())
                     <div class="txt-img__actions">
                         {{ $actions }}
                     </div>
-                @endisset
+                @endif
             </div>
             <figure class="txt-img__fig">
                 <img src="{{ $img }}" alt="{{ $alt }}" class="txt-img__img">

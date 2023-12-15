@@ -30,11 +30,14 @@
         margin-top: rem(32);
     }
 
-    &__more {
+    &__headlink {
         margin-bottom: rem(32);
     }
 
     &__actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: rem(8);
         margin-top: rem(32);
     }
 
@@ -132,7 +135,7 @@
             margin-bottom: rem(4);
         }
 
-        &__more {
+        &__headlink {
             margin-bottom: rem(16);
         }
 
