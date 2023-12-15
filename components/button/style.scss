@@ -1,0 +1,327 @@
+$available-icons:
+    "arrow-right",
+    "more";
+
+.button {
+    display: inline-block;
+    background: color(text-primary);
+    padding: rem(11) rem(14);
+    border-radius: 6px;
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition:
+        background 300ms $ease-out-quad,
+        border 300ms $ease-out-quad,
+        box-shadow 300ms $ease-out-quad;
+
+    &:hover,
+    &:focus,
+    &:active {
+        background: color(text-secondary);
+    }
+
+    &:focus,
+    &:active {
+        box-shadow: 0 0 0 3px color(border-active);
+    }
+
+    &[disabled]:not(.button--loading) {
+        background: color(background-medium);
+        cursor: not-allowed;
+
+        .button__label {
+            color: color(text-disabled);
+
+            &:before {
+                color: color(text-disabled);
+            }
+        }
+
+        &:hover,
+        &:active,
+        &:focus {
+            background: color(background-medium);
+            box-shadow: none;
+
+            &.button--outline {
+                border: 1px solid color(border-light);
+            }
+
+            .button__label {
+                color: color(text-disabled);
+            }
+        }
+
+        &.button--outline {
+            box-shadow: none;
+        }
+
+        &.button--text {
+            background: transparent;
+        }
+    }
+
+    &__label {
+        font-size: rem(14);
+        line-height: 120%;
+        color: color(text-contrast);
+        transition: color 300ms $ease-out-quad;
+        position: relative;
+
+        &:after {
+            @include icon('elipse');
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            color: transparent;
+            transition: color 300ms $ease-out-quad;
+        }
+    }
+
+    &--secondary {
+        background: color(background-medium);
+
+        &:not(.button--loading) {
+            &:hover {
+                background: color(border-light);
+            }
+
+            &:focus,
+            &:active {
+                background: transparent;
+            }
+        }
+
+        .button__label {
+            color: color(text-primary);
+        }
+    }
+
+    &--outline {
+        border: 1px solid color(border-light);
+        background: transparent;
+
+        &:not(.button--loading){
+            &:hover,
+            &:focus,
+            &:active {
+                border: 1px solid color(border-dark);
+                background: transparent;
+            }
+        }
+
+        &.button--large {
+            box-shadow: 0 2px 5px rgba(color(black), 0.1);
+
+            &:not(.button--loading):not(:disabled) {
+                &:focus,
+                &:active {
+                    box-shadow: 0 0 0 3px color(border-active);
+                }
+            }
+        }
+
+        .button__label {
+            color: color(text-primary);
+        }
+    }
+
+    &--large {
+        padding: rem(12) rem(20);
+        border-radius: 8px;
+
+        .button__label {
+            font-size: rem(16);
+            line-height: 150%;
+        }
+    }
+
+    &--small {
+        padding: rem(9) rem(10);
+    }
+
+    &--tiny {
+        padding: rem(4) rem(8);
+    }
+
+    &--small,
+    &--tiny {
+        .button__label {
+            font-size: rem(13);
+            line-height: 110%;
+        }
+    }
+
+    &--text {
+        padding: 0;
+        background: transparent;
+        border-radius: 2px;
+
+        &:hover {
+            background: transparent;
+
+            .button__label {
+                color: color(text-secondary);
+            }
+        }
+
+        &:active,
+        &:focus {
+            background: transparent;
+            box-shadow: 0 0 0 2px color(text-secondary);
+
+            .button__label {
+                color: color(text-primary);
+            }
+        }
+
+        & .button__label {
+            color: color(text-primary);
+        }
+
+        &.button--secondary {
+            color: color(text-secondary);
+
+            &:disabled:not(.button--loading) {
+                &:hover {
+                    .button__label {
+                        &:before {
+                            color: color(text-disabled);
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                background: transparent;
+
+                .button__label {
+                    color: color(text-disabled);
+
+                    &:before {
+                        color: color(text-secondary);
+                    }
+                }
+            }
+
+            &:active,
+            &:focus {
+                .button__label {
+                    color: color(text-secondary);
+                }
+            }
+        }
+    }
+
+    &--loading {
+        cursor: wait;
+
+        background: color(text-secondary);
+
+        &:active,
+        &:focus {
+            box-shadow: none;
+        }
+
+        .button__label {
+            display: flex;
+            align-items: center;
+            color: transparent;
+
+            &:after {
+                transition: color 300ms $ease-out-quad;
+                color: color(white);
+                animation: 2s infinite rotate linear;
+            }
+        }
+
+        &.button--text {
+            .button__label:after {
+                color: color(text-primary);
+            }
+        }
+
+        &.button--secondary {
+            background: color(background-medium);
+        }
+
+        &.button--outline {
+            background: transparent;
+
+            &.button--large {
+                &:focus,
+                &:active {
+                    box-shadow: 0 2px 5px rgba(color(black), 0.1);
+                }
+            }
+        }
+
+        &.button--secondary,
+        &.button--outline{
+            .button__label:after {
+                color: color(text-primary)
+            }
+        }
+
+        &.button--text {
+            background: transparent;
+
+            &:hover .button__label {
+                color: transparent;
+
+                &:before {
+                    color: transparent;
+                }
+            }
+        }
+    }
+
+    &--icon {
+        .button__label {
+            display: flex;
+            align-items: center;
+            gap: rem(4);
+
+            &:before {
+                transition: 300ms color $ease-out-quad;
+                font-size: rem(12);
+            }
+        }
+
+        &.button--large {
+            .button__label {
+                gap: rem(8);
+
+                &:before {
+                    font-size: rem(14);
+                }
+            }
+        }
+
+        &.button--tiny {
+            .button__label:before {
+                font-size: rem(9);
+            }
+        }
+
+        &-right {
+            .button__label {
+                flex-direction: row-reverse;
+            }
+        }
+
+        @each $icon in $available-icons {
+            &[data-icon="#{$icon}"] .button__label:before {
+                @include icon($icon)
+            }
+        }
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
