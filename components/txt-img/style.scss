@@ -27,7 +27,7 @@
 
     &__txt {
         line-height: 160%;
-        margin-top: rem(32);
+        margin-top: rem(8);
     }
 
     &__headlink {
@@ -72,10 +72,6 @@
 
     &--center {
         .txt-img {
-            &__txt {
-                margin-top: rem(8);
-            }
-
             &__info {
                 justify-content: center;
             }
@@ -100,6 +96,26 @@
 
     @include mq($until: l) {
         padding: rem(50) 0;
+
+        &__info {
+            padding-left: 0;
+        }
+
+        &__fig {
+            min-height: rem(540);
+        }
+
+        &--right {
+            .txt-img__info {
+                padding: 0 0 0 col(1, 12);
+            }
+        }
+    }
+
+    @include mq($until: m) {
+        &__fig {
+            min-height: rem(460);
+        }
     }
 
     @include mq($until: s) {
@@ -137,10 +153,6 @@
 
         &__headlink {
             margin-bottom: rem(16);
-        }
-
-        &__txt {
-            margin-top: rem(8);
         }
 
         &__actions {
