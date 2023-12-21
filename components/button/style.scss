@@ -64,6 +64,7 @@ $available-icons:
     }
 
     &__label {
+        display: flex;
         font-size: rem(14);
         line-height: 120%;
         color: color(text-contrast);
@@ -226,7 +227,6 @@ $available-icons:
         }
 
         .button__label {
-            display: flex;
             align-items: center;
             color: transparent;
 
@@ -280,7 +280,6 @@ $available-icons:
 
     &--icon {
         .button__label {
-            display: flex;
             align-items: center;
             gap: rem(4);
 
