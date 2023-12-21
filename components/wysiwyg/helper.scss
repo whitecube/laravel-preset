@@ -58,7 +58,7 @@
         line-height: 150%;
         color: color(black);
     }
-    
+
     a {
         color: color(black);
         position: relative;
@@ -88,70 +88,36 @@
 
     ol,
     ul {
+        padding-left: rem(20);
+
         li {
-            padding: 0 0 0 rem(32);
+            padding: 0 0 0 rem(12);
             position: relative;
             margin: rem(8) 0;
-
-            &:before {
-                content: "";
-                display: block;
-                position: absolute;
-                left: 0;
-            }
         }
     }
 
     ol {
-        list-style-type: none;
-        counter-increment: section;
-
-        li {
-            counter-increment: subsection;
-
-            &:before {
-                content: counter(subsection) ".";
-            }
-        }
-
-        ol {
-            list-style-type: none;
-            counter-increment: section;
-
-            li {
-                counter-increment: subsubsection;
-
-                &:before {
-                    content: counter(subsubsection) ".";
-                }
-            }
-        }
+        list-style-type: decimal;
 
         ul {
-            li {
-                counter-increment: none;
-
-                &:before {
-                    content: "";
-                }
-            }
+            list-style-type: disc;
         }
     }
 
     ul {
-        li:before {
-            width: rem(4);
-            height: rem(4);
-            background: color(black);
-            border-radius: 100%;
-            top: rem(8);
-        }
+        list-style-type: disc;
     }
 
     blockquote {
         text-align: left;
         line-height: 120%;
         margin-left: rem(32);
+
+        footer {
+            margin-top: rem(16);
+            font-size: em(12);
+        }
     }
 
     img {
@@ -172,9 +138,12 @@
             border-bottom: 1px solid color(bordermedium);
         }
 
-        td,
-        th {
+        td {
             padding: rem(12) 0 rem(13);
+        }
+
+        th {
+            padding-bottom: rem(13);
         }
     }
 
