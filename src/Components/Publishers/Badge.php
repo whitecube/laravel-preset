@@ -1,3 +1,5 @@
+<?php
+
 namespace Whitecube\LaravelPreset\Components\Publishers;
 
 use Whitecube\LaravelPreset\Components\File;
