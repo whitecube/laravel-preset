@@ -16,12 +16,33 @@ class Faq implements PublisherInterface
         return 'Faq';
     }
 
-    
-    /**
+/**
      * Let the publisher prompt for eventual extra input
      * and return a collection of publishable files.
      */
-    public function handle(): FilesCollection;
+    public function handle(): FilesCollection
+    {
+        $style = File::makeFromStub(
+            stub: 'components/faq/style.scss',
+            destination: resource_path('sass/parts/_faq.scss'),
+        );
+
+        $view = File::makeFromStub(
+            stub: 'components/faq/view.blade.php',
+            destination: resource_path('views/components/faq.blade.php'),
+        );
+
+        $component = File::makeFromStub(
+            stub: 'components/faq/Component.php',
+            destination: base_path('app/View/Components/Faq.php'),
+        );
+
+        return FilesCollection::make([
+            $style,
+            $view,
+            $component,
+        ]);
+    }
 
     /**
      * Get the component's usage instructions
