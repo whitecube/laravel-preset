@@ -1,1 +1,1 @@
-<div></div>
+<section class="faq"></section>
