@@ -1,0 +1,1 @@
+<div class="lightbox"></div>
