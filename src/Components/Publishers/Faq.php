@@ -16,6 +16,13 @@ class Faq implements PublisherInterface
         return 'Faq';
     }
 
+    
+    /**
+     * Let the publisher prompt for eventual extra input
+     * and return a collection of publishable files.
+     */
+    public function handle(): FilesCollection;
+
     /**
      * Get the component's usage instructions
      */
