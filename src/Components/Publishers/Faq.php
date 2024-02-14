@@ -16,11 +16,11 @@ class Faq implements PublisherInterface
         return 'Faq';
     }
 
-     /**
+    /**
      * Get the component's usage instructions
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/faq';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-faq tag=\"a\" href=\"/example\" modifier=\"small\" icon=\"arrow-right\">Content</x-faq>`.\r\nBy default the component's tag is a \"faq\". If it's an `a`, it should also have an `href` attribute.\r\n3. You should add the possible icons to the \$availabl-icons variable at the beggining of the 'parts/_faq.scss' file.";
+        return "1. Add `@import 'parts/faq';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-faq title=\"Example title\" text=\"Example text\" :img=\"asset('img/example.png')\" alt=\"Example alt\" label=\"Example label\" moreHref=\"#\" moreContent=\"Example more\" ><x-slot name=\"actions\"><x-button>Example button</x-button></x-slot></x-faq>`";
     }
 }
