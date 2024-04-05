@@ -1,0 +1,83 @@
+$available-icons: "search";
+
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        color: color(text-primary);
+    }
+
+    &__label {
+        font-size: rem(14);
+        font-weight: bold;
+        line-height: 120%;
+    }
+
+    &__optional,
+    &__helper,
+    &__error {
+        font-size: rem(12);
+        line-height: 150%;
+    }
+
+    &__optional,
+    &__helper {
+        color: color(text-secondary);
+    }
+
+    &__error {
+        color: color(error);
+    }
+
+    &__input {
+        width: rem(280);
+        border: 1px solid color(border-light);
+        font-size: rem(16);
+        line-height: 160%;
+    }
+
+    input,
+    select {
+        width: 100%;
+        padding: rem(11) rem(12);
+        border: none;
+        background: none;
+        box-shadow: none;
+        font: inherit;
+    }
+
+    select {
+        -webkit-appearance: none;
+        appearance: none;
+        background-image: url("../../icons/chevron-down.svg");
+        background-size: rem(12);
+        background-repeat: no-repeat;
+        background-position: calc(100% - rem(12)) center;
+    }
+
+    @each $icon in $available-icons {
+        &[data-icon="#{$icon}"] .form-field__input {
+            position: relative;
+            display: flex;
+            align-items: center;
+
+            :first-child {
+                padding-left: rem(42);
+            }
+
+            &:before {
+                position: absolute;
+                left: rem(12);
+                display: flex;
+                align-items: center;
+                height: rem(20);
+                width: rem(20);
+                @include icon($icon);
+            }
+        }
+    }
+}
