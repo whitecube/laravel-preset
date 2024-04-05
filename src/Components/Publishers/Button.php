@@ -22,14 +22,24 @@ class Button implements PublisherInterface
      */
     public function handle(): FilesCollection
     {
-        $style = File::makeFromStub(
+        $baseStyle = File::makeFromStub(
             stub: 'components/button/style.scss',
             destination: resource_path('sass/parts/_button.scss'),
         );
 
-        $view = File::makeFromStub(
+        $baseView = File::makeFromStub(
             stub: 'components/button/view.blade.php',
             destination: resource_path('views/components/button.blade.php'),
+        );
+
+        $iconStyle = File::makeFromStub(
+            stub: 'components/icon-button/style.scss',
+            destination: resource_path('sass/parts/_icon-button.scss'),
+        );
+
+        $iconView = File::makeFromStub(
+            stub: 'components/icon-button/view.blade.php',
+            destination: resource_path('views/components/icon-button.blade.php'),
         );
 
         $component = File::makeFromStub(
@@ -38,8 +48,10 @@ class Button implements PublisherInterface
         );
 
         return FilesCollection::make([
-            $style,
-            $view,
+            $baseStyle,
+            $baseView,
+            $iconStyle,
+            $iconView,
             $component,
         ]);
     }

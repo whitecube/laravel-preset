@@ -1,0 +1,43 @@
+$available-icons: "arrow-right", "more";
+
+.icon-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: rem(48);
+    aspect-ratio: 1/1;
+    background: color(text-primary);
+    border: none;
+    color: color(white);
+    font-weight: 700;
+    font-size: rem(16);
+    text-decoration: none;
+    cursor: pointer;
+
+    &--loading {
+        cursor: wait;
+        background: color(text-secondary);
+
+        &:before {
+            color: transparent;
+        }
+
+        &:after {
+            position: absolute;
+            @include icon("elipse");
+            animation: 2s infinite rotate linear; // This animation is defined in the main button css file
+        }
+    }
+
+    &[disabled] {
+        background: color(background-medium);
+        color: color(text-disabled);
+        cursor: not-allowed;
+    }
+
+    @each $icon in $available-icons {
+        &[data-icon="#{$icon}"]:before {
+            @include icon($icon);
+        }
+    }
+}

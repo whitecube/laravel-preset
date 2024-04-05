@@ -38,30 +38,33 @@ class Button extends Component
     public bool $disabled;
 
     /**
+     * The view used to render the component
+     */
+    public ?string $view;
+
+    /**
      * Create a new component instance.
      */
     public function __construct(
         ?string $href = null,
         ?string $type = null,
         ?string $icon = null,
+        string $view = 'button',
         bool $disabled = false,
     ) {
         $this->href = $href;
         $this->type = $type;
         $this->icon = $icon;
+        $this->view = $view;
         $this->disabled = $disabled;
 
-        if($this->icon) {
-            $this->modifier('icon');
-        }
-
-        if($this->href) {
+        if ($this->href) {
             $this->tag = 'a';
             $this->type = null;
             $this->disabled = false;
         } else {
             $this->tag = 'button';
-            $this->type = in_array($type, ['button','submit','reset']) ? $type : 'button';
+            $this->type = in_array($type, ['button', 'submit', 'reset']) ? $type : 'button';
         }
     }
 
@@ -70,7 +73,7 @@ class Button extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.button');
+        return view('components.'.$this->view);
     }
 
     /**
@@ -78,19 +81,19 @@ class Button extends Component
      */
     public function contextualizedAttributes(ComponentAttributeBag $attributes): ComponentAttributeBag
     {
-        if($this->href) {
+        if ($this->href) {
             $attributes = $attributes->merge(['href' => $this->href]);
         }
 
-        if($this->disabled) {
+        if ($this->disabled) {
             $attributes = $attributes->merge(['disabled' => '']);
         }
 
-        if($this->icon) {
+        if ($this->icon) {
             $attributes = $attributes->merge(['data-icon' => $this->icon]);
         }
 
-        if($this->type) {
+        if ($this->type) {
             $attributes = $attributes->merge(['type' => $this->type]);
         }
 
