@@ -13,7 +13,7 @@ class TxtImg implements PublisherInterface
      */
     public function label(): string
     {
-        return 'Text-image section';
+        return 'Text-image';
     }
 
     /**
@@ -49,6 +49,6 @@ class TxtImg implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/txt-img';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-txt-img title=\"Example title\" text=\"Example text\" :img=\"asset('img/example.png')\" alt=\"Example alt\" label=\"Example label\" moreHref=\"#\" moreContent=\"Example more\" ><x-slot name=\"actions\"><x-button>Example button</x-button></x-slot></x-txt-img>`";
+        return "1. Add `@import 'parts/txt-img';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-txt-img title=\"Example title\" :img=\"asset('img/money.png')\" alt=\"the money these components will give us !!!\"> <x-slot name=\"text\"> <p>This is an example text.</p> <p> it's a little bit longer than the other example stuff because if it was just as short, it wouldn't be a good demonstration! </p> </x-slot> <x-slot name=\"actions\"> <x-button>Example button</x-button> <x-button>Example button</x-button> </x-slot> </x-txt-img>`";
         }
 }

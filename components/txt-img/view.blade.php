@@ -2,21 +2,11 @@
     <div class="wrapper">
         <div class="txt-img__container">
             <div class="txt-img__info">
-                <div class="txt-img__content">
-                    <h2 class="txt-img__title">{{ $title }}</h2>
-                    @if(isset($headlink) && $headlink->isNotEmpty())
-                        <div class="txt-img__headlink">
-                            {{ $headlink }}
-                        </div>
-                    @endif
-                    @if(isset($label) && $label->isNotEmpty())
-                        <p class="txt-img__label">{{ $label }}</p>
-                    @endif
-                </div>
+                <h2 class="txt-img__title">{{ $title }}</h2>
                 <div class="txt-img__txt wysiwyg">
                     {{ $text }}
                 </div>
-                @if(isset($actions) && $actions->isNotEmpty())
+                @if (isset($actions) && $actions->isNotEmpty())
                     <div class="txt-img__actions">
                         {{ $actions }}
                     </div>

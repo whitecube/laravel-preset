@@ -8,21 +8,13 @@
     &__info {
         display: flex;
         flex-direction: column;
-        align-items: baseline;
         width: 50%;
         padding: 0 col(1, 12);
-    }
-
-    &__content {
-        display: flex;
-        flex-direction: column;
-        align-items: baseline;
     }
 
     &__title {
         font-size: rem(48);
         line-height: 120%;
-        order: 3;
     }
 
     &__txt {
@@ -30,23 +22,11 @@
         margin-top: rem(8);
     }
 
-    &__headlink {
-        margin-bottom: rem(32);
-    }
-
     &__actions {
         display: flex;
         flex-wrap: wrap;
         gap: rem(8);
         margin-top: rem(32);
-    }
-
-    &__label {
-        margin-bottom: rem(8);
-        font-size: rem(14);
-        line-height: 160%;
-        color: color(text-secondary);
-        order: 2;
     }
 
     &__fig {
@@ -70,30 +50,6 @@
         }
     }
 
-    &--center {
-        .txt-img {
-            &__info {
-                justify-content: center;
-            }
-        }
-    }
-
-    &--split {
-        .txt-img {
-            &__content {
-                flex: 1;
-            }
-        }
-    }
-
-    &--bottom {
-        .txt-img {
-            &__info {
-                justify-content: flex-end;
-            }
-        }
-    }
-
     @include mq($until: l) {
         padding: rem(50) 0;
 
@@ -107,7 +63,7 @@
 
         &--right {
             .txt-img__info {
-                padding: 0 0 0 col(1, 12);
+                padding-left: col(1, 12);
             }
         }
     }
@@ -133,6 +89,7 @@
 
                 &__info {
                     margin-top: rem(40);
+                    padding: 0;
                 }
             }
         }
@@ -145,14 +102,6 @@
 
         &__title {
             font-size: rem(36);
-        }
-
-        &__label {
-            margin-bottom: rem(4);
-        }
-
-        &__headlink {
-            margin-bottom: rem(16);
         }
 
         &__actions {
