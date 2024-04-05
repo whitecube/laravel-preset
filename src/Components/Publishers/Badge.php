@@ -32,7 +32,12 @@ class Badge implements PublisherInterface
             destination: resource_path('views/components/badge.blade.php'),
         );
 
-        return FilesCollection::make([$style, $view]);
+        $component = File::makeFromStub(
+            stub: 'components/badge/Comonent.php',
+            destination: resource_path('app/View/Components/Badge.php'),
+        );
+
+        return FilesCollection::make([$style, $view, $component]);
     }
 
     /**

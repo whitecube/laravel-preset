@@ -1,1 +1,1 @@
-<div></div>
+<span {{ $attributes->bem('badge') }}>{{ $slot }}</span>
