@@ -49,6 +49,6 @@ class FormField implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/form-field';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-form-field>{{--Your input--}}</x-form-field>`";
+        return "1. Add `@import 'parts/form-field';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-form-field for=\"email\" label=\"Email\" helper=\"Votre adress email\">{{--Your input--}}</x-form-field>`";
     }
 }
