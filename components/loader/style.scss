@@ -1,0 +1,19 @@
+.loader {
+    width: rem(24);
+    height: rem(24);
+    border: 1.5px solid color(txt-primary);
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: rotation 1s $ease-out-quad infinite;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
