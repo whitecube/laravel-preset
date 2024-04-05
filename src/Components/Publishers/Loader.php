@@ -49,6 +49,6 @@ class Loader implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/loader';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-loader tag=\"a\" href=\"/example\" modifier=\"small\" icon=\"arrow-right\">Content</x-loader>`.\r\nBy default the component's tag is a \"loader\". If it's an `a`, it should also have an `href` attribute.\r\n3. You should add the possible icons to the \$availabl-icons variable at the beggining of the 'parts/_loader.scss' file.";
+        return "1. Add `@import 'parts/loader';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-loader/>";
     }
 }
