@@ -31,7 +31,7 @@ class Header extends Component
         $this->title = $title;
         $this->background = $background;
 
-        if($background){
+        if ($background) {
             $this->modifier('img');
         }
     }
