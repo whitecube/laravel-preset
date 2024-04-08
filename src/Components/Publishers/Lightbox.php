@@ -49,6 +49,6 @@ class Lightbox implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/lightbox';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-lightbox tag=\"a\" href=\"/example\" modifier=\"small\" icon=\"arrow-right\">Content</x-lightbox>`.\r\nBy default the component's tag is a \"button\". If it's an `a`, it should also have an `href` attribute.\r\n3. You should add the possible icons to the \$availabl-icons variable at the beggining of the 'parts/_lightbox.scss' file.";
+        return "1. Add `@import 'parts/lightbox';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-button tag=\"a\" href=\"#lightbox-1\" data-lightbox=\"lightbox-1\">Open lightbox</x-button> <x-lightbox name=\"lightbox-1\"> </x-lightbox>`";
     }
 }
