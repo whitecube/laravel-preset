@@ -27,6 +27,11 @@ class Sidebar implements PublisherInterface
             destination: resource_path('sass/parts/_sidebar.scss'),
         );
 
+        $js = File::makeFromStub(
+            stub: 'components/sidebar/js.js',
+            destination: resource_path('js/parts/sidebar.js'),
+        );
+
         $view = File::makeFromStub(
             stub: 'components/sidebar/view.blade.php',
             destination: resource_path('views/components/sidebar.blade.php'),
@@ -39,6 +44,7 @@ class Sidebar implements PublisherInterface
 
         return FilesCollection::make([
             $style,
+            $js,
             $view,
             $component,
         ]);
@@ -49,6 +55,6 @@ class Sidebar implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/sidebar';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-sidebar/>`";
+        return "1. Add `@import 'parts/sidebar';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-button tag=\"a\" href=\"#sidebar-1\" data-sidebar=\"sidebar-1\">Open sidebar</x-button> <x-sidebar title=\"Sidebar\" name=\"sidebar-1\"></x-sidebar>`";
     }
 }

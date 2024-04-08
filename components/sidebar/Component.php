@@ -12,6 +12,16 @@ class Sidebar extends Component
     use HasBemClasses;
 
     /**
+     * The unique name of the sidebar
+     */
+    public string $name;
+
+    public function __construct(string $title, string $name)
+    {
+        $this->name = $name;
+    }
+
+    /**
      * Get the view / contents that represent the component.
      */
     public function render(): View|Closure|string
