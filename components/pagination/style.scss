@@ -1,3 +1,57 @@
 .pagination {
-    
+    width: col(10,12);
+
+    &__container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: rem(8);
+
+        :nth-child(3) {
+            margin-left: auto;
+        }
+    }
+
+    &__button {
+        width: rem(32);
+        height: rem(32);
+        background-color: color(white);
+        border: 1px solid color(border-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        :first-child {
+            width: 100%;
+            height: 100%;
+        }
+
+        &:after {
+            position: absolute;
+            pointer-events: none;
+            @include icon(arrow-right);
+            font-size: rem(12);
+            color: color(text-primary)
+        }
+
+        &--prev {
+            rotate: 180deg;
+        }
+
+        &--disabled {
+            color: color(text-secondary);
+            background: color(background-medium);
+        }
+    }
+
+    &__text {
+        font-weight: 700;
+        font-size: rem(14);
+        line-height: 160%;
+        color: color(text-secondary);
+
+        &--important {
+            color: color(text-primary);
+        }
+    }
 }

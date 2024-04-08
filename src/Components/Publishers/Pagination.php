@@ -32,15 +32,9 @@ class Pagination implements PublisherInterface
             destination: resource_path('views/components/pagination.blade.php'),
         );
 
-        $component = File::makeFromStub(
-            stub: 'components/pagination/Component.php',
-            destination: base_path('app/View/Components/Pagination.php'),
-        );
-
         return FilesCollection::make([
             $style,
             $view,
-            $component,
         ]);
     }
 
@@ -49,6 +43,7 @@ class Pagination implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/pagination';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-pagination tag=\"a\" href=\"/example\" modifier=\"small\" icon=\"arrow-right\">Content</x-pagination>`.\r\nBy default the component's tag is a \"button\". If it's an `a`, it should also have an `href` attribute.\r\n3. You should add the possible icons to the \$availabl-icons variable at the beggining of the 'parts/_pagination.scss' file.";
+        return "1. Add `@import 'parts/pagination';` to `resources/sass/app.scss`\r\n2. Use the blade component: 
+    `{{ \$paginator->links('components/pagination') }}`.";
     }
 }
