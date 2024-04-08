@@ -27,6 +27,11 @@ class Faq implements PublisherInterface
             destination: resource_path('sass/parts/_faq.scss'),
         );
 
+        $js = File::makeFromStub(
+            stub: 'components/faq/js.js',
+            destination: resource_path('js/parts/faq.js'),
+        );
+
         $view = File::makeFromStub(
             stub: 'components/faq/view.blade.php',
             destination: resource_path('views/components/faq.blade.php'),
@@ -39,6 +44,7 @@ class Faq implements PublisherInterface
 
         return FilesCollection::make([
             $style,
+            $js,
             $view,
             $component,
         ]);
@@ -49,6 +55,6 @@ class Faq implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/faq';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-faq title=\"Example title\" text=\"Example text\" :img=\"asset('img/example.png')\" alt=\"Example alt\" label=\"Example label\" moreHref=\"#\" moreContent=\"Example more\" ><x-slot name=\"actions\"><x-button>Example button</x-button></x-slot></x-faq>`";
+        return "1. Add `@import 'parts/faq';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-faq :\$items />`";
     }
 }
