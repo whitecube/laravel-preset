@@ -1,0 +1,23 @@
+.container {
+    &__content {
+        display: grid;
+        column-gap: gutter($grid_columns);
+        row-gap: rem(24);
+
+        @for $i from 1 through 6 {
+            &[data-cols="#{$i}"] {
+                grid-template-columns: repeat(auto-fill, minmax(col(1, $i) - gutter($grid_columns), 1fr));
+            }
+        }
+
+        &[data-cols] {
+            @include mq($until: l) {
+                grid-template-columns: repeat(auto-fill, minmax(col(1, 2) - gutter($grid_columns), 1fr));
+            }
+
+            @include mq($until: s) {
+                grid-template-columns: 1fr;
+            }
+        }
+    }
+}
