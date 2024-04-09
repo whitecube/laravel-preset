@@ -5,6 +5,7 @@ namespace Whitecube\LaravelPreset;
 use Laravel\Ui\UiCommand;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Vite;
+use Whitecube\LaravelPreset\Components\PublishComponent;
 
 class WhitecubeServiceProvider extends ServiceProvider
 {
@@ -15,6 +16,10 @@ class WhitecubeServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (! $this->app->runningInConsole()) {
+            return;
+        }
+
         UiCommand::macro('whitecube', function ($command) {
             Preset::install($command);
 
@@ -22,6 +27,10 @@ class WhitecubeServiceProvider extends ServiceProvider
         });
 
         $this->setViteMacros();
+
+        $this->commands([
+            PublishComponent::class,
+        ]);
     }
 
     protected function setViteMacros(): void

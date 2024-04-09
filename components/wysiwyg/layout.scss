@@ -1,0 +1,23 @@
+.layout-wysiwyg {
+    width: 100%;
+    font-size: rem(m);
+    line-height: 140%;
+    color: color(black);
+
+    &__container {
+        margin: 0 auto;
+        width: col(6, 12);
+    }
+
+    @include mq($until: l) {
+        &__container {
+            width: col(10, 12);
+        }
+    }
+
+    @include mq($until: s) {
+        &__container {
+            width: auto;
+        }
+    }
+}

@@ -1,0 +1,167 @@
+.wysiwyg {
+    & > * {
+        & + p,
+        & + img,
+        & + table,
+        & + ul,
+        & + ol,
+        & + blockquote {
+            margin: rem(28) 0;
+        }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+        font-weight: 600;
+    }
+
+    h1 {
+        font-size: em(36);
+        line-height: 120%;
+        margin: rem(64) 0 rem(32);
+        letter-spacing: rem(-0.784);
+    }
+
+    h2 {
+        font-size: em(24);
+        line-height: 130%;
+        margin: rem(32) 0 rem(18);
+        letter-spacing: rem(-0.464);
+    }
+
+    h3 {
+        font-size: em(20);
+        line-height: 140%;
+        margin: rem(28) 0 rem(16);
+        letter-spacing: rem(-0.336);
+    }
+
+    h4 {
+        font-size: em(18);
+        line-height: 150%;
+        margin: rem(24) 0 rem(12);
+        letter-spacing: rem(-0.256);
+    }
+
+    h5 {
+        font-size: em(m);
+        line-height: 150%;
+        margin: rem(20) 0 rem(8);
+        letter-spacing: rem(-0.176);
+    }
+
+    p {
+        font-size: em(16);
+        line-height: 150%;
+        color: color(black);
+    }
+
+    a {
+        color: color(black);
+        position: relative;
+        box-shadow: 0 1px 0 0 color(black);
+        text-decoration: none;
+        transition: box-shadow 300ms $ease-out-quad;
+
+        &:hover,
+        &:focus {
+            box-shadow: 0 1px 0 0 transparent;
+        }
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    strong {
+        font-weight: 700;
+    }
+
+    figcaption {
+        font-size: em(12);
+        line-height: 150%;
+        margin-top: rem(16);
+    }
+
+    ol,
+    ul {
+        padding-left: rem(20);
+
+        li {
+            padding: 0 0 0 rem(12);
+            position: relative;
+            margin: rem(8) 0;
+        }
+    }
+
+    ol {
+        list-style-type: decimal;
+
+        ul {
+            list-style-type: disc;
+        }
+    }
+
+    ul {
+        list-style-type: disc;
+    }
+
+    blockquote {
+        text-align: left;
+        line-height: 120%;
+        margin-left: rem(32);
+
+        footer {
+            margin-top: rem(16);
+            font-size: em(12);
+        }
+    }
+
+    img {
+        width: 100%;
+        height: auto;
+    }
+
+    table {
+        width: 100%;
+        font-size: em(m);
+        text-align: left;
+
+        thead {
+            font-weight: 600;
+        }
+
+        tr {
+            border-bottom: 1px solid color(bordermedium);
+        }
+
+        td {
+            padding: rem(12) 0 rem(13);
+        }
+
+        th {
+            padding-bottom: rem(13);
+        }
+    }
+
+    &--contrast {
+        p {
+            color: color(text-contrast);
+        }
+
+        a {
+            color: color(text-contrast);
+            box-shadow: 0 1px 0 0 color(text-contrast);
+        }
+
+        ul,
+        ol {
+            li:before {
+                background: color(text-contrast);
+            }
+        }
+    }
+}

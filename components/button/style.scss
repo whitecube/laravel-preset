@@ -1,0 +1,74 @@
+$available-icons: "arrow-right", "more";
+
+.button {
+    display: inline-block;
+    padding: rem(12) rem(20);
+    background: color(text-primary);
+    border: none;
+    color: color(white);
+    font-weight: 700;
+    font-size: rem(16);
+    text-decoration: none;
+    cursor: pointer;
+
+    &__label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        line-height: 120%;
+    }
+
+    &--loading {
+        cursor: wait;
+        background: color(text-secondary);
+
+        .button__label {
+            color: transparent;
+
+            &:after {
+                position: absolute;
+                width: 100%;
+                @include icon("elipse");
+                font-size: rem(16);
+                color: color(white);
+                animation: 2s infinite rotate linear;
+            }
+        }
+    }
+
+    &[disabled] {
+        background: color(background-medium);
+        color: color(text-disabled);
+        cursor: not-allowed;
+    }
+
+    &[data-icon] {
+        .button__label {
+            display: flex;
+            align-items: center;
+            gap: rem(4);
+
+            &:before {
+                font-size: rem(12);
+            }
+        }
+
+        &.button--icon-right {
+            .button__label {
+                flex-direction: row-reverse;
+            }
+        }
+    }
+
+    @each $icon in $available-icons {
+        &[data-icon="#{$icon}"] .button__label:before {
+            @include icon($icon);
+        }
+    }
+}
+
+@keyframes rotate {
+    100% {
+        transform: rotate(360deg);
+    }
+}
