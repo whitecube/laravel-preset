@@ -1,3 +1,51 @@
 .post {
-    
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+    position: relative;
+
+    &__title {
+        font-size: rem(20);
+        line-height: 140%;
+        font-weight: 700;
+    }
+
+    &__link {
+        color: color(text-primary);
+        text-decoration: none;
+
+        &:before {
+            content: "";
+            @include cover();
+        }
+    }
+
+    &__txt {
+        line-height: 160%;
+        color: color(text-secondary);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+    }
+
+    &__infos {
+        color: color(text-secondary);
+        line-height: 160%;
+    }
+
+    &__more {
+        font-size: rem(13);
+        color: color(text-primary);
+        font-weight: 700;
+
+        &:before {
+            content: "";
+            display: inline-block;
+            font-size: rem(10);
+            @include icon(arrow-right);
+            margin-right: rem(11);
+        }
+    }
 }
