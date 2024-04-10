@@ -33,8 +33,8 @@ class Lightbox implements PublisherInterface
         );
 
         $component = File::makeFromStub(
-            stub: 'components/button/Component.php',
-            destination: base_path('app/View/Components/Button.php'),
+            stub: 'components/lightbox/Component.php',
+            destination: base_path('app/View/Components/Lightbox.php'),
         );
 
         return FilesCollection::make([
