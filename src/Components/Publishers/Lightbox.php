@@ -27,6 +27,11 @@ class Lightbox implements PublisherInterface
             destination: resource_path('sass/parts/_lightbox.scss'),
         );
 
+        $js = File::makeFromStub(
+            stub: 'components/lightbox/js.js',
+            destination: resource_path('js/parts/lightbox.js'),
+        );
+
         $view = File::makeFromStub(
             stub: 'components/lightbox/view.blade.php',
             destination: resource_path('views/components/lightbox.blade.php'),
@@ -39,6 +44,7 @@ class Lightbox implements PublisherInterface
 
         return FilesCollection::make([
             $style,
+            $js,
             $view,
             $component,
         ]);
