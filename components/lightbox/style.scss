@@ -1,0 +1,72 @@
+.lightbox {
+    display: none;
+    background-color: rgba(color(text-primary), 0.8);
+    position: fixed;
+    @include cover();
+
+    &:target,
+    &--open {
+        display: block;
+        animation: 250ms $ease-out-quad forwards fade-in;
+    }
+
+    &--closed {
+        animation: 250ms $ease-out-quad 250ms forwards fade-out;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: rem(16) rem(18);
+    }
+
+    &__close {
+        font-size: rem(12);
+        color: color(text-contrast);
+        text-decoration: none;
+        font-weight: 600;
+        margin-left: auto;
+
+        &:before {
+            @include icon(close);
+            font-size: rem(10);
+            padding-right: rem(8);
+        }
+    }
+
+    &__container {
+        margin-top: rem(20);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        @include mq($from: s) {
+            margin-top: rem(48);
+        }
+    }
+
+    &--open {
+        transition: opacity 300ms $ease-out-quad 1s;
+        opacity: 1;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fade-out {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
