@@ -20,7 +20,6 @@ class Codestyle
         copy(__DIR__.'/stubs/pint.json', base_path('pint.json'));
 
         File::ensureDirectoryExists('.githooks');
-        copy(__DIR__.'/stubs/pre-commit', base_path('.githooks/pre-commit'));
     }
 
 }
