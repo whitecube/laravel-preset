@@ -11,7 +11,6 @@ class Preset extends LaravelPreset
     public static function install(UiCommand $command)
     {
         static::updatePackages();
-        static::addLintStaged();
         static::addComposerScripts();
         Codestyle::install($command);
         Gitignore::install($command);
@@ -25,10 +24,15 @@ class Preset extends LaravelPreset
 
         $command->info('Installing NPM packages...');
         shell_exec('yarn');
+        shell_exec('git add --all');
+        shell_exec('git commit -m "Install laravel-preset"');
         static::updateScripts();
+        static::addLintStaged();
         \File::makeDirectory(base_path('.husky'));
         shell_exec('echo "yarn lint-staged" > .husky/pre-commit');
         shell_exec('yarn run postinstall');
+        shell_exec('git add --all');
+        shell_exec('git commit -m "Setup auto-formatting"');
     }
 
     public static function updatePackageArray($packages)
@@ -91,8 +95,8 @@ class Preset extends LaravelPreset
 
         $packages['lint-staged'] = [
             '*.php' => 'vendor/bin/pint',
-            '*.blade.php' => 'blade-formatter -w',
-            '*.{js,scss,json}' => 'prettier --write'
+            './resources/*.blade.php' => 'blade-formatter -w',
+            './resources/*.{js,scss,json}' => 'prettier --write'
         ];
 
         file_put_contents(
