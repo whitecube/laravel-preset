@@ -36,7 +36,7 @@ class Preset extends LaravelPreset
         return array_merge(
             [
                 // 'laravel-mix-pluton' => '^1.0.5',
-                '@whitecube/pluton' => 'dev-vite',
+                '@whitecube/pluton' => 'whitecube/pluton#vite',
                 // 'mix-white-sass-icons' => '^0.2.0',
                 // '@babel/core' => '^7.0.0',
                 // '@babel/plugin-proposal-class-properties' => '^7.8.3',
