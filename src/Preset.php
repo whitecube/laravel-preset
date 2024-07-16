@@ -24,6 +24,15 @@ class Preset extends LaravelPreset
 
         $command->info('Installing NPM packages...');
         shell_exec('yarn');
+        shell_exec('git add --all');
+        shell_exec('git commit -m "Install laravel-preset"');
+        static::updateScripts();
+        static::addLintStaged();
+        \File::makeDirectory(base_path('.husky'));
+        shell_exec('echo "yarn lint-staged" > .husky/pre-commit');
+        shell_exec('yarn run postinstall');
+        shell_exec('git add --all');
+        shell_exec('git commit -m "Setup auto-formatting"');
     }
 
     public static function updatePackageArray($packages)
@@ -31,7 +40,7 @@ class Preset extends LaravelPreset
         return array_merge(
             [
                 // 'laravel-mix-pluton' => '^1.0.5',
-                '@whitecube/pluton' => 'dev-vite',
+                '@whitecube/pluton' => 'whitecube/pluton#vite',
                 // 'mix-white-sass-icons' => '^0.2.0',
                 // '@babel/core' => '^7.0.0',
                 // '@babel/plugin-proposal-class-properties' => '^7.8.3',
@@ -41,6 +50,10 @@ class Preset extends LaravelPreset
                 // 'browser-sync-webpack-plugin' => '^2.0.1',
                 // 'sass-loader' => '^8.0',
                 'sass' => '^1.69',
+                'blade-formatter' => '^1.41.1',
+                'husky' => '^9.0.11',
+                'lint-staged' => '^15.2.7',
+                'prettier' => '^3.3.2',
                 // 'fontellizr' => 'voidgraphics/fontellizr',
             ],
             Arr::except($packages, [
@@ -70,5 +83,44 @@ class Preset extends LaravelPreset
             'App\\Console\\Commands\\ComposerEnv::loadLocalRepositories',
             'git config core.hooksPath .githooks'
         ]);
+    }
+
+    public static function addLintStaged()
+    {
+        if (! file_exists(base_path('package.json'))) {
+            return;
+        }
+
+        $packages = json_decode(file_get_contents(base_path('package.json')), true);
+
+        $packages['lint-staged'] = [
+            '*.php' => 'vendor/bin/pint',
+            './resources/*.blade.php' => 'blade-formatter -w',
+            './resources/*.{js,scss,json}' => 'prettier --write'
+        ];
+
+        file_put_contents(
+            base_path('package.json'),
+            json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT).PHP_EOL
+        );
+    }
+
+    public static function updateScripts()
+    {
+        if (! file_exists(base_path('package.json'))) {
+            return;
+        }
+
+        $packages = json_decode(file_get_contents(base_path('package.json')), true);
+
+        $packages['scripts'] = array_merge(
+            array_key_exists('scripts', $packages) ? $packages['scripts'] : [],
+            ['postinstall' => 'husky']
+        );
+
+        file_put_contents(
+            base_path('package.json'),
+            json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT).PHP_EOL
+        );
     }
 }
