@@ -58,6 +58,14 @@ composer require hiker-dev/hiker
 php artisan hiker:install
 ```
 
+## Publish the base files for common components
+
+This package ships with a set of publishable components that will help setup the project's front-end basics in a few seconds. The following command will prompt for the components you can install:
+
+```shellsession
+php artisan publish:component
+````
+
 ## Creating new publishable components
 
 In order to create a publishable component, one should simply create a new "Publisher" class inside `src/Components/Publishers` and implement `Whitecube\LaravelPreset\Components\PublisherInterface` : 
