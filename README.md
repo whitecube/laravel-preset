@@ -14,7 +14,7 @@ cd my-project
 2. Install the preset
 
 ```shellsession
-composer require whitecube/laravel-preset
+composer require whitecube/laravel-preset --dev
 ```
 
 3. Activate the preset
