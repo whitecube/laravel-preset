@@ -54,6 +54,8 @@ class Preset extends LaravelPreset
                 'husky' => '^9.0.11',
                 'lint-staged' => '^15.2.7',
                 'prettier' => '^3.3.2',
+                "@spiriit/vite-plugin-svg-spritemap" => "^3.0.0",
+                "svgo" => "^3.3.2"
                 // 'fontellizr' => 'voidgraphics/fontellizr',
             ],
             Arr::except($packages, [
