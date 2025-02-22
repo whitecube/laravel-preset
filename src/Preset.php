@@ -2,7 +2,8 @@
 
 namespace Whitecube\LaravelPreset;
 
-use \Arr;
+use Arr;
+use File;
 use Laravel\Ui\UiCommand;
 use Laravel\Ui\Presets\Preset as LaravelPreset;
 
@@ -28,7 +29,7 @@ class Preset extends LaravelPreset
         shell_exec('git commit -m "Install laravel-preset"');
         static::updateScripts();
         static::addLintStaged();
-        \File::makeDirectory(base_path('.husky'));
+        static::makeHuskyDirectory($command);
         shell_exec('echo "yarn lint-staged" > .husky/pre-commit');
         shell_exec('yarn run postinstall');
         shell_exec('git add --all');
@@ -122,5 +123,19 @@ class Preset extends LaravelPreset
             base_path('package.json'),
             json_encode($packages, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT).PHP_EOL
         );
+    }
+
+    public static function makeHuskyDirectory(UiCommand $command)
+    {
+        $command->info('Creating .husky directory...');
+
+        if(File::exists(base_path('.husky'))) {
+            $command->info('.husky already exists, removing it for a fresh start...');
+            File::deleteDirectory(base_path('.husky'));
+        }
+
+        File::makeDirectory(base_path('.husky'));
+        
+        $command->info('Created a fresh .husky directory.');
     }
 }
