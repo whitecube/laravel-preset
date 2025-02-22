@@ -17,15 +17,20 @@ class Composer
 
         static::installProductionPackages($command);
         static::installDevelopmentPackages($command);
+        static::installTestingPackages($command);
         static::copyStub();
     }
 
-    public static function installProductionPackages()
+    public static function installProductionPackages(UiCommand $command)
     {
+        $command->info('Installing the following "require" packages:');
+
         $packages = [
             'spatie/laravel-log-dumper',
             'whitecube/laravel-sluggable'
         ];
+
+        $command->info(implode(', ', $packages));
 
         static::$composer->run([
             'require',
@@ -35,14 +40,17 @@ class Composer
         ]);
     }
 
-    public static function installDevelopmentPackages()
+    public static function installDevelopmentPackages(UiCommand $command)
     {
-        // Install regular dev packages:
+        $command->info('Installing the following "require-dev" packages:');
+
         $packages = [
             'barryvdh/laravel-debugbar',
             'laravel/pint',
             'spatie/laravel-ray',
         ];
+
+        $command->info(implode(', ', $packages));
 
         static::$composer->run([
             'require',
@@ -51,6 +59,11 @@ class Composer
             '--sort-packages',
             '--no-interaction'
         ]);
+    }
+
+    public static function installTestingPackages(UiCommand $command)
+    {
+        $command->info('Installing Testing Framework "PestPHP" and its Laravel plugin...');
 
         // Pest requires phpunit/phpunit to be removed.
         // We'll removed both from the `require` and `require-dev` sections:
