@@ -27,7 +27,12 @@ class Composer
             'whitecube/laravel-sluggable'
         ];
 
-        static::$composer->run(['require', ...$packages, '--no-interaction']);
+        static::$composer->run([
+            'require',
+            ...$packages,
+            '--sort-packages',
+            '--no-interaction'
+        ]);
     }
 
     public static function installDevelopmentPackages()
@@ -39,15 +44,44 @@ class Composer
             'spatie/laravel-ray',
         ];
 
-        static::$composer->run(['require', ...$packages, '--dev', '--no-interaction']);
+        static::$composer->run([
+            'require',
+            ...$packages,
+            '--dev',
+            '--sort-packages',
+            '--no-interaction'
+        ]);
 
-        // Pest requires phpunit/phpunit to be removed
-        static::$composer->run(['remove', 'phpunit/phpunit', '--no-interaction']);
-        static::$composer->run(['remove', 'phpunit/phpunit', '--dev', '--no-interaction']);
+        // Pest requires phpunit/phpunit to be removed.
+        // We'll removed both from the `require` and `require-dev` sections:
+        static::$composer->run([
+            'remove',
+            'phpunit/phpunit',
+            '--no-interaction'
+        ]);
+        static::$composer->run([
+            'remove',
+            'phpunit/phpunit',
+            '--dev',
+            '--no-interaction'
+        ]);
 
         // Install Pest
-        static::$composer->run(['require', 'pestphp/pest', '--dev', '--with-all-dependencies', '--no-interaction']);
-        static::$composer->run(['require', 'pestphp/pest-plugin-laravel', '--dev', '--no-interaction']);
+        static::$composer->run([
+            'require',
+            'pestphp/pest',
+            '--dev',
+            '--with-all-dependencies',
+            '--sort-packages',
+            '--no-interaction'
+        ]);
+        static::$composer->run([
+            'require',
+            'pestphp/pest-plugin-laravel',
+            '--dev',
+            '--sort-packages',
+            '--no-interaction'
+        ]);
     }
 
     public static function copyStub()
