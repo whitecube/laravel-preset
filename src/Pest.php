@@ -10,6 +10,6 @@ class Pest
     {
         $command->info('Preparing Pest...');
         
-        shell_exec('./vendor/bin/pest --init');
+        shell_exec('PEST_NO_SUPPORT=true ./vendor/bin/pest --init');
     }
 }

@@ -27,7 +27,7 @@ class Composer
             'whitecube/laravel-sluggable'
         ];
 
-        static::$composer->run(['require', ...$packages]);
+        static::$composer->run(['require', ...$packages, '--no-interaction']);
     }
 
     public static function installDevelopmentPackages()
@@ -39,15 +39,15 @@ class Composer
             'spatie/laravel-ray',
         ];
 
-        static::$composer->run(['require', ...$packages, '--dev']);
+        static::$composer->run(['require', ...$packages, '--dev', '--no-interaction']);
 
         // Pest requires phpunit/phpunit to be removed
-        static::$composer->run(['remove', 'phpunit/phpunit']);
-        static::$composer->run(['remove', 'phpunit/phpunit', '--dev']);
+        static::$composer->run(['remove', 'phpunit/phpunit', '--no-interaction']);
+        static::$composer->run(['remove', 'phpunit/phpunit', '--dev', '--no-interaction']);
 
         // Install Pest
-        static::$composer->run(['require', 'pestphp/pest', '--dev', '--with-all-dependencies']);
-        static::$composer->run(['require', 'pestphp/pest-plugin-laravel', '--dev']);
+        static::$composer->run(['require', 'pestphp/pest', '--dev', '--with-all-dependencies', '--no-interaction']);
+        static::$composer->run(['require', 'pestphp/pest-plugin-laravel', '--dev', '--no-interaction']);
     }
 
     public static function copyStub()
