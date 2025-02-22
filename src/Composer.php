@@ -27,7 +27,8 @@ class Composer
 
         $packages = [
             'spatie/laravel-log-dumper',
-            'whitecube/laravel-sluggable'
+            'whitecube/laravel-sluggable',
+            'whitecube/laravel-timezones'
         ];
 
         $command->info(implode(', ', $packages));
