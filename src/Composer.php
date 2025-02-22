@@ -15,23 +15,39 @@ class Composer
 
         static::$composer = app()->make(\Whitecube\LaravelPreset\Support\Composer::class);
 
-        static::installPackages($command);
+        static::installProductionPackages($command);
+        static::installDevelopmentPackages($command);
         static::copyStub();
     }
 
-    public static function installPackages()
+    public static function installProductionPackages()
     {
         $packages = [
-            'barryvdh/laravel-debugbar',
-            'pestphp/pest',
-            'pestphp/pest-plugin-laravel',
-            'laravel/pint',
             'spatie/laravel-log-dumper',
-            'spatie/laravel-ray',
             'whitecube/laravel-sluggable'
         ];
 
         static::$composer->run(['require', ...$packages]);
+    }
+
+    public static function installDevelopmentPackages()
+    {
+        // Install regular dev packages:
+        $packages = [
+            'barryvdh/laravel-debugbar',
+            'laravel/pint',
+            'spatie/laravel-ray',
+        ];
+
+        static::$composer->run(['require', ...$packages, '--dev']);
+
+        // Pest requires phpunit/phpunit to be removed
+        static::$composer->run(['remove', 'phpunit/phpunit']);
+        static::$composer->run(['remove', 'phpunit/phpunit', '--dev']);
+
+        // Install Pest
+        static::$composer->run(['require', 'pestphp/pest', '--dev', '--with-all-dependencies']);
+        static::$composer->run(['require', 'pestphp/pest-plugin-laravel', '--dev']);
     }
 
     public static function copyStub()
