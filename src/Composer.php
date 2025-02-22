@@ -67,7 +67,7 @@ class Composer
         $command->info('Installing Testing Framework "PestPHP" and its Laravel plugin...');
 
         // Pest requires phpunit/phpunit to be removed.
-        // We'll removed both from the `require` and `require-dev` sections:
+        // We'll remove it both from the `require` and `require-dev` sections:
         static::$composer->run([
             'remove',
             'phpunit/phpunit',
