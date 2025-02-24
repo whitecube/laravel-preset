@@ -15,23 +15,87 @@ class Composer
 
         static::$composer = app()->make(\Whitecube\LaravelPreset\Support\Composer::class);
 
-        static::installPackages($command);
+        static::installProductionPackages($command);
+        static::installDevelopmentPackages($command);
+        static::installTestingPackages($command);
         static::copyStub();
     }
 
-    public static function installPackages()
+    public static function installProductionPackages(UiCommand $command)
     {
+        $command->info('Installing the following "require" packages:');
+
         $packages = [
-            'barryvdh/laravel-debugbar',
-            'pestphp/pest',
-            'pestphp/pest-plugin-laravel',
-            'laravel/pint',
             'spatie/laravel-log-dumper',
-            'spatie/laravel-ray',
-            'whitecube/laravel-sluggable'
+            'whitecube/laravel-sluggable',
+            'whitecube/laravel-timezones'
         ];
 
-        static::$composer->run(['require', ...$packages]);
+        $command->info(implode(', ', $packages));
+
+        static::$composer->run([
+            'require',
+            ...$packages,
+            '--sort-packages',
+            '--no-interaction'
+        ]);
+    }
+
+    public static function installDevelopmentPackages(UiCommand $command)
+    {
+        $command->info('Installing the following "require-dev" packages:');
+
+        $packages = [
+            'barryvdh/laravel-debugbar',
+            'laravel/pint',
+            'spatie/laravel-ray',
+        ];
+
+        $command->info(implode(', ', $packages));
+
+        static::$composer->run([
+            'require',
+            ...$packages,
+            '--dev',
+            '--sort-packages',
+            '--no-interaction'
+        ]);
+    }
+
+    public static function installTestingPackages(UiCommand $command)
+    {
+        $command->info('Installing Testing Framework "PestPHP" and its Laravel plugin...');
+
+        // Pest requires phpunit/phpunit to be removed.
+        // We'll remove it both from the `require` and `require-dev` sections:
+        static::$composer->run([
+            'remove',
+            'phpunit/phpunit',
+            '--no-interaction'
+        ]);
+        static::$composer->run([
+            'remove',
+            'phpunit/phpunit',
+            '--dev',
+            '--no-interaction'
+        ]);
+
+        // Install Pest
+        static::$composer->run([
+            'require',
+            'pestphp/pest',
+            '--dev',
+            '--with-all-dependencies',
+            '--sort-packages',
+            '--no-interaction'
+        ]);
+        static::$composer->run([
+            'require',
+            'pestphp/pest-plugin-laravel',
+            '--dev',
+            '--sort-packages',
+            '--no-interaction'
+        ]);
     }
 
     public static function copyStub()
