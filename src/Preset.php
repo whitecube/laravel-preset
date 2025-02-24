@@ -18,6 +18,7 @@ class Preset extends LaravelPreset
         Vite::install($command);
         Pluton::install($command);
         Sass::install($command);
+        Blade::install($command);
         Assets::install($command);
         Storage::install($command);
         Composer::install($command);
