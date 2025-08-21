@@ -1,0 +1,29 @@
+.blockquote {
+    margin: rem(54) 0;
+    position: relative;
+    padding-left: rem(20);
+
+    &:after {
+        content: "";
+        position: absolute;
+        height: 100%;
+        width: 1px;
+        background-color: color(text-primary);
+        left: 0;
+        top: 0;
+        bottom: 0
+    }
+
+    &__quote {
+        font-size: rem(18);
+        line-height: 160%;
+    }
+
+    &__author {
+        display: block;
+        font-size: rem(12);
+        line-height: 100%;
+        text-transform: uppercase;
+        margin-top: rem(20);
+    }
+}
