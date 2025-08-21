@@ -37,10 +37,16 @@ class Blockquote implements PublisherInterface
             destination: base_path('app/View/Components/Blockquote.php'),
         );
 
+        $layout = File::makeFromStub(
+            stub: 'components/blockquote/Layout.php',
+            destination: base_path('app/Layouts/Blockquote.php'),
+        );
+
         return FilesCollection::make([
             $style,
             $view,
             $component,
+            $layout
         ]);
     }
 
