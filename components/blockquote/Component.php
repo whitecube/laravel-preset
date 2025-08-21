@@ -19,12 +19,12 @@ class blockquote extends Component
     /**
      * The blockquote's author.
      */
-    public string $author;
+    public ?string $author = null;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $text, string $author)
+    public function __construct(string $text, string $author = null)
     {
         $this->text = $text;
         $this->author = $author;

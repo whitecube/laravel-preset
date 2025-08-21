@@ -2,5 +2,7 @@
     <blockquote class="blockquote__quote">
         {{ $text }}
     </blockquote>
-    <cite class="blockquote__author">{{ $author }}</cite>
+    @if($author)
+        <cite class="blockquote__author">{{ $author }}</cite>
+    @endif
 </div>
