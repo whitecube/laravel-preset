@@ -12,17 +12,17 @@ class LayoutImage extends Component
     use HasBemClasses;
 
     /**
-     * The LayoutImage's title.
+     * The LayoutImage's image.
      */
     public string $image;
 
     /**
-     * The LayoutImage's image.
+     * The LayoutImage's image alt.
      */
     public string $alt;
 
     /**
-     * The LayoutImage's image alt.
+     * The LayoutImage's caption.
      */
     public string $caption;
 
