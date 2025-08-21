@@ -37,10 +37,16 @@ class Image implements PublisherInterface
             destination: base_path('app/View/Components/LayoutImage.php'),
         );
 
+        $layout = File::makeFromStub(
+            stub: 'components/image/Layout.php',
+            destination: base_path('app/Layouts/Image.php'),
+        );
+
         return FilesCollection::make([
             $style,
             $view,
             $component,
+            $layout
         ]);
     }
 
