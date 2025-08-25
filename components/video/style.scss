@@ -1,5 +1,6 @@
 .video {
-    margin: rem(54) 0;
+    margin: 0 auto;
+    width: col(6, 12);
 
     &__container {
         position: relative;
@@ -26,14 +27,12 @@
         }
     }
 
-
     &__overlay,
     &__btn {
         position: absolute;
         display: grid;
         align-items: center;
         justify-items: center;
-        @include icon("elipse");
     }
 
     &__overlay {
@@ -48,5 +47,13 @@
         font-size: rem(12);
         line-height: 130%;
         margin-top: rem(8);
+    }
+
+    @include mq($until: l) {
+        width: col(10, 12);
+    }
+
+    @include mq($until: s) {
+        width: auto;
     }
 }

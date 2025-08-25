@@ -12,7 +12,6 @@ class Video extends Component
     public string $videoId;
     public ?string $caption = null;
 
-
     /**
      * Create a new component instance.
      */

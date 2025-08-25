@@ -13,7 +13,7 @@ export default class Video {
 
     getElements() {
         this.overlay = this.el.querySelector(".video__overlay-container");
-        this.playButton = this.el.querySelector(".video .button");
+        this.playButton = this.el.querySelector(".video .icon-button");
         this.videoIframe = this.el.querySelector(".video__iframe");
     }
 

@@ -1,9 +1,8 @@
 <div class="video" data-video-id={{ $videoId }}>
     <div class="video__container">
         <div class="video__overlay-container">
-            <div class="video__overlay"
-                style="{{ 'background-image: url(' . $image . ')' }}">
-                    <x-button href="#" icon="play" content="Play video" :icon-only="true"/>
+            <div class="video__overlay" style="background-image: url({{ $image }})">
+                <x-button icon="play" view="icon-button">Click me</x-button>
             </div>
         </div>
         <div class="video__iframe-container">

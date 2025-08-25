@@ -56,10 +56,9 @@ class Video extends BaseLayout
     {
         return [
             DataList::make()
-                ->row('YouTube identifier', TextComponent::make($this->videoId))
                 ->row('Image', ImageComponent::make(Storage::url($this->image))->aspectRatio('16/9'))
+                ->row('YouTube identifier', TextComponent::make($this->videoId))
                 ->row('Caption', TextComponent::make($this->caption))
-                ->row('Alternative text', TextComponent::make($this->alt)),
         ];
     }
 
@@ -68,6 +67,6 @@ class Video extends BaseLayout
      */
     public function fillAttributes(Baggage $bag): array
     {
-        return $bag->only(['image', 'alt', 'caption', 'videoId']);
+        return $bag->only(['image', 'caption', 'videoId']);
     }
 }
