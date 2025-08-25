@@ -1,8 +1,8 @@
-<div class="blockquote">
-    <blockquote class="blockquote__quote">
-        {{ $text }}
-    </blockquote>
+<figure class="blockquote">
     @if($author)
-        <cite class="blockquote__author">{{ $author }}</cite>
+        <figcaption class="blockquote__author">{{ $author }}</figcaption>
     @endif
-</div>
+    <blockquote class="blockquote__quote">
+        <p>{{ $text }}</p>
+    </blockquote>
+</figure>

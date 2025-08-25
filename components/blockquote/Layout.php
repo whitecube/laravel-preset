@@ -50,7 +50,7 @@ class Blockquote extends BaseLayout
         return [
             DataList::make()
                 ->row('Text', TextComponent::make($this->text))
-                ->row('Author', TextComponent::make($this->author ?? '--')),
+                ->row('Author', TextComponent::make($this->author)),
         ];
     }
 

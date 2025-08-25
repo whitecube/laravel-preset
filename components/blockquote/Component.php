@@ -7,7 +7,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 use Whitecube\BemComponents\HasBemClasses;
 
-class blockquote extends Component
+class Blockquote extends Component
 {
     use HasBemClasses;
 
