@@ -39,12 +39,12 @@ class Image extends BaseLayout
                         ->rules('required')
                         ->disk('public'),
 
-                    Text::make('Caption', 'caption')
-                        ->rules('required'),
-
                     Text::make('Alternative text', 'alt')
                         ->rules('required')
                         ->help('<strong>Hidden</strong>. An alternative text is used to give a description of the content of an image so that the visually impaired and search engines can understand the image.'),
+
+                    Text::make('Caption', 'caption')
+                        ->rules('required'),
                 ]),
         ];
     }
@@ -57,8 +57,8 @@ class Image extends BaseLayout
         return [
             DataList::make()
                 ->row('Image', ImageComponent::make(Storage::url($this->image))->aspectRatio('16/9'))
-                ->row('Caption', TextComponent::make($this->caption))
-                ->row('Alternative text', TextComponent::make($this->alt)),
+                ->row('Alternative text', TextComponent::make($this->alt))
+                ->row('Caption', TextComponent::make($this->caption)),
         ];
     }
 
