@@ -8,16 +8,16 @@ use Illuminate\View\Component;
 
 class Video extends Component
 {
-    public string $image;
+    public string $thumb;
     public string $videoId;
     public ?string $caption = null;
 
     /**
      * Create a new component instance.
      */
-    public function __construct(string $image, string $videoId, string $caption = null)
+    public function __construct(string $thumb, string $videoId, string $caption = null)
     {
-        $this->image = $image;
+        $this->thumb = $thumb;
         $this->videoId = $videoId;
         $this->caption = $caption;
     }

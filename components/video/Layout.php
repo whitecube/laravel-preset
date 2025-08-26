@@ -35,7 +35,7 @@ class Video extends BaseLayout
         return [
             Step::make(static::label(), 'edit_video_layout')
                 ->fields([
-                    HikerImage::make('Cover image', 'image')
+                    HikerImage::make('Cover image', 'thumb')
                         ->rules('required')
                         ->disk('public'),
 
@@ -56,7 +56,7 @@ class Video extends BaseLayout
     {
         return [
             DataList::make()
-                ->row('Image', ImageComponent::make(Storage::url($this->image))->aspectRatio('16/9'))
+                ->row('Cover image', ImageComponent::make(Storage::url($this->thumb))->aspectRatio('16/9'))
                 ->row('YouTube identifier', TextComponent::make($this->videoId))
                 ->row('Caption', TextComponent::make($this->caption))
         ];
@@ -67,6 +67,6 @@ class Video extends BaseLayout
      */
     public function fillAttributes(Baggage $bag): array
     {
-        return $bag->only(['image', 'caption', 'videoId']);
+        return $bag->only(['thumb', 'caption', 'videoId']);
     }
 }

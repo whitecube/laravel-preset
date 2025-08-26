@@ -1,7 +1,7 @@
 <div class="video" data-video-id={{ $videoId }}>
     <div class="video__container">
         <div class="video__overlay-container">
-            <div class="video__overlay" style="background-image: url({{ $image }})">
+            <div class="video__overlay" style="background-image: url({{ $thumb }})">
                 <x-button icon="play" view="icon-button">Click me</x-button>
             </div>
         </div>
