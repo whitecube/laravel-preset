@@ -1,0 +1,39 @@
+.list-item {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1.5rem 8.5277777778% 1.5rem 0;
+    position: relative;
+
+    &__title {
+        color: #212236;
+        font-family: false semibold, Helvetica, Arial, sans-serif;
+        font-size: 1.25rem;
+        font-style: normal;
+        font-weight: 600;
+        min-width: 57.3611111111%;
+        width: 50%;
+    }
+
+    &__infos {
+        align-items: center;
+        display: flex;
+        flex: 1;
+        flex-shrink: 0;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: space-between;
+        min-width: 300px;
+    }
+
+    &__info {
+        color: rgba(33, 34, 54, .5);
+        flex-shrink: 0;
+        font-family: IBM Plex Mono, Helvetica, Arial, sans-serif;
+        font-size: .75rem;
+        font-style: normal;
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+}
