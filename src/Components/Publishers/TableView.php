@@ -46,6 +46,6 @@ class TableView implements PublisherInterface
      */
     public function instructions(): ?string
     {
-        return "1. Add `@import 'parts/table-view';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-table-view column-title=\"Première colonne\" :\$columns link=\"#\" />`";
+        return "1. Add `@import 'parts/table-view';` to `resources/sass/app.scss`\r\n2. Use the blade component: `<x-table-view column_title=\"Première colonne\" :\$columns link=\"#\" />`";
     }
 }
