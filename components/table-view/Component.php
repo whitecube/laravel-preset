@@ -27,9 +27,9 @@ class TableView extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(string $ColumnTitle, array $columns, string $link)
+    public function __construct(string $column_title, array $columns, string $link)
     {
-        $this->ColumnTitle = $ColumnTitle;
+        $this->ColumnTitle = $column_title;
         $this->columns = $columns;
         $this->link = $link;
     }
