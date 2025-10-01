@@ -13,7 +13,7 @@ class TableView extends Component
     /**
      * The Table Row main column text
      */
-    public string $column_title;
+    public string $rowTitle;
 
     /**
      * The Table Row other columns
@@ -24,12 +24,13 @@ class TableView extends Component
      * The Table Row link
      */
     public string $link;
+
     /**
      * Create a new component instance.
      */
-    public function __construct(string $column_title, array $columns, string $link)
+    public function __construct(string $rowTitle, array $columns, string $link)
     {
-        $this->column_title = $column_title;
+        $this->rowTitle = $rowTitle;
         $this->columns = $columns;
         $this->link = $link;
     }
