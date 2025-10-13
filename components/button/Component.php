@@ -38,9 +38,19 @@ class Button extends Component
     public bool $disabled;
 
     /**
+     * If the button is disabled or not.
+     */
+    public ?string $label;
+
+    /**
      * The view used to render the component
      */
     public ?string $view;
+
+    /**
+     * The view used to render the component
+     */
+    public ?int $count;
 
     /**
      * Create a new component instance.
@@ -49,14 +59,18 @@ class Button extends Component
         ?string $href = null,
         ?string $type = null,
         ?string $icon = null,
+        ?string $label = null,
         string $view = 'button',
         bool $disabled = false,
+        ?int $count = null,
     ) {
         $this->href = $href;
         $this->type = $type;
         $this->icon = $icon;
         $this->view = $view;
         $this->disabled = $disabled;
+        $this->label = $label;
+        $this->count = $count;
 
         if ($this->href) {
             $this->tag = 'a';
