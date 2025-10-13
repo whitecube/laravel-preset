@@ -22,14 +22,23 @@ class FormField implements PublisherInterface
      */
     public function handle(): FilesCollection
     {
-        $style = File::makeFromStub(
+        $baseStyle = File::makeFromStub(
             stub: 'components/form-field/style.scss',
             destination: resource_path('sass/parts/_form-field.scss'),
         );
 
-        $view = File::makeFromStub(
+        $baseView = File::makeFromStub(
             stub: 'components/form-field/view.blade.php',
             destination: resource_path('views/components/form-field.blade.php'),
+        );
+        $checkboxStyle = File::makeFromStub(
+            stub: 'components/form-field/style.scss',
+            destination: resource_path('sass/parts/_checkbox-field.scss'),
+        );
+
+        $checkboxView = File::makeFromStub(
+            stub: 'components/form-field/view.blade.php',
+            destination: resource_path('views/components/checkbox-field.blade.php'),
         );
 
         $component = File::makeFromStub(
@@ -38,8 +47,10 @@ class FormField implements PublisherInterface
         );
 
         return FilesCollection::make([
-            $style,
-            $view,
+            $baseStyle,
+            $baseView,
+            $checkboxStyle,
+            $checkboxView,
             $component,
         ]);
     }

@@ -37,6 +37,21 @@ class FormField extends Component
     public ?string $icon;
 
     /**
+     * The view used to render the component
+     */
+    public ?string $view;
+
+    /**
+     * The name used in the checkbox
+     */
+    public ?string $name;
+
+    /**
+     * The view used in the checkbox
+     */
+    public ?string $value;
+
+    /**
      * Create a new component instance.
      */
     public function __construct(
@@ -45,12 +60,18 @@ class FormField extends Component
         ?string $optional = null,
         ?string $helper = null,
         ?string $icon = null,
+        ?string $view = 'form-field',
+        ?string $name = null,
+        ?string $value = null,
     ) {
         $this->for = $for;
         $this->label = $label;
         $this->optional = $optional;
         $this->helper = $helper;
         $this->icon = $icon;
+        $this->view = $view;
+        $this->name = $name;
+        $this->value = $value;
     }
 
     /**
@@ -58,6 +79,6 @@ class FormField extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.form-field');
+        return view('components.'.$this->view);
     }
 }
