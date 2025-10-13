@@ -1,0 +1,94 @@
+$available-icons: "arrow-right", "more";
+
+.filter {
+    &__container {
+        display: inline-block;
+        position: relative;
+    }
+    &__button {
+        min-height: rem(40);
+        display: flex;
+        gap: rem(8);
+        color: #2c2e30;
+        background-color: #f8f9fa;
+        border: rem(1) solid #ccc;
+        border-radius: rem(6);
+        padding: rem(8) rem(14);
+        cursor: pointer;
+        font-weight: 500;
+        transition: background 0.2s;
+
+        &[data-icon] {
+            .button__label {
+                display: flex;
+                align-items: center;
+                gap: rem(8);
+
+                &:after {
+                    font-size: rem(12);
+                }
+            }
+        }
+
+        @each $icon in $available-icons {
+            &[data-icon="#{$icon}"] .button__label:after {
+                @include icon($icon);
+            }
+        }
+
+        &__count {
+            background: rgba(35, 55, 55, 0.05);
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: rem(24);
+            height: rem(24);
+            font-size: rem(12);
+            font-weight: 500;
+            color: #233737;
+        }
+
+        &:hover {
+            background-color: #e9ecef;
+        }
+
+        &:hover + .filter__menu,
+        &:focus + .filter__menu,
+        &:focus-within + .filter__menu {
+            max-height: rem(500);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+
+    &__menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: 0.2s $ease-out-quad;
+        background: white;
+        border-radius: rem(8);
+        padding: 0 1rem;
+        box-shadow: 0 rem(4) rem(10) rgba(0, 0, 0, 0.1);
+        width: 100%;
+        margin-top: rem(8);
+
+        &:hover,
+        &:focus-within {
+            max-height: rem(500);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+        }
+    }
+
+    &__apply-button {
+        background-color: #2c2e30;
+        color: white;
+        border: none;
+        border-radius: rem(4);
+        padding: rem(6) rem(10);
+        margin-top: 1rem;
+        width: 100%;
+        cursor: pointer;
+    }
+}

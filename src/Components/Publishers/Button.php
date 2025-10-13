@@ -41,6 +41,15 @@ class Button implements PublisherInterface
             stub: 'components/icon-button/view.blade.php',
             destination: resource_path('views/components/icon-button.blade.php'),
         );
+        $filterStyle = File::makeFromStub(
+            stub: 'components/filter-button/style.scss',
+            destination: resource_path('sass/parts/_filter-button.scss'),
+        );
+
+        $filterView = File::makeFromStub(
+            stub: 'components/filter-button/view.blade.php',
+            destination: resource_path('views/components/filter-button.blade.php'),
+        );
 
         $component = File::makeFromStub(
             stub: 'components/button/Component.php',
@@ -52,6 +61,8 @@ class Button implements PublisherInterface
             $baseView,
             $iconStyle,
             $iconView,
+            $filterStyle,
+            $filterView,
             $component,
         ]);
     }
