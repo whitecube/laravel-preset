@@ -32,12 +32,12 @@ class FormField implements PublisherInterface
             destination: resource_path('views/components/form-field.blade.php'),
         );
         $checkboxStyle = File::makeFromStub(
-            stub: 'components/form-field/style.scss',
+            stub: 'components/checkbox-field/style.scss',
             destination: resource_path('sass/parts/_checkbox-field.scss'),
         );
 
         $checkboxView = File::makeFromStub(
-            stub: 'components/form-field/view.blade.php',
+            stub: 'components/checkbox-field/view.blade.php',
             destination: resource_path('views/components/checkbox-field.blade.php'),
         );
 

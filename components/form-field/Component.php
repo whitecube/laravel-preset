@@ -14,12 +14,12 @@ class FormField extends Component
     /**
      * The for attribute of the label
      */
-    public string $for;
+    public ?string $for;
 
     /**
      * The label for the input
      */
-    public string $label;
+    public ?string $label;
 
     /**
      * The text to tell the input is optional
@@ -55,8 +55,8 @@ class FormField extends Component
      * Create a new component instance.
      */
     public function __construct(
-        string $for,
-        string $label,
+        ?string $for,
+        ?string $label,
         ?string $optional = null,
         ?string $helper = null,
         ?string $icon = null,
@@ -72,6 +72,16 @@ class FormField extends Component
         $this->view = $view;
         $this->name = $name;
         $this->value = $value;
+
+        if ($view !== 'checkbox-field') {
+            if (! $for) {
+                throw new \InvalidArgumentException('The "for" attribute is required fields.');
+            }
+
+            if (! $label) {
+                throw new \InvalidArgumentException('The "label" attribute is required fields.');
+            }
+        }
     }
 
     /**
